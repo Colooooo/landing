@@ -1,22 +1,7 @@
 import ScrollArrow from "./ScrollArrow";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import "leaflet/dist/leaflet.css";
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
-import L from "leaflet";
 import logo from "../assets/logoblanco.png";
-
-const AnyMarker = Marker as any;
-const AnyMapContainer = MapContainer as any;
-
-const position: [number, number] = [-34.912178, -56.178205];
-
-const barberIcon = L.icon({
-  iconUrl: "https://img.icons8.com/?size=100&id=7570&format=png&color=ffffff",
-  iconSize: [30, 30],
-  iconAnchor: [0, 30],
-  popupAnchor: [0, -40],
-});
 
 const container = {
   hidden: {},
