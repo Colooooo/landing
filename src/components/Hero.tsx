@@ -2,7 +2,6 @@ import ScrollArrow from "./ScrollArrow";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import logo from "../assets/logoblanco.png";
-import captura1 from "../assets/captura1.png";
 
 const container = {
   hidden: {},
