@@ -1,5 +1,5 @@
 import ScrollArrow from "./ScrollArrow";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 import logo from "../assets/logoblanco.png";
 import useEmblaCarousel from "embla-carousel-react";
@@ -14,7 +14,7 @@ const container = {
   },
 };
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, x: -30 },
   show: { opacity: 1, x: 0,
         transition: {
@@ -23,7 +23,7 @@ const item = {
     }, },
    };
 
-const item2 = {
+const item2: Variants = {
   hidden: { opacity: 0, x: -100 },
   show: { opacity: 1, x: 0,
         transition: {
@@ -32,7 +32,7 @@ const item2 = {
     }, },
    };
 
-const item3 = {
+const item3: Variants = {
   hidden: { opacity: 0, x: 100 },
   show: { opacity: 1, x: 0,
         transition: {
@@ -41,7 +41,7 @@ const item3 = {
     }, },
    };
 
-const item4 = {
+const item4: Variants = {
   hidden: { opacity: 0, y: 100 },
   show: { opacity: 1, y: 0,     
     transition: {
