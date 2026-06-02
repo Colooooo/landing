@@ -2,6 +2,8 @@ import ScrollArrow from "./ScrollArrow";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import logo from "../assets/logoblanco.png";
+import useEmblaCarousel from "embla-carousel-react";
+import { useState, useEffect } from "react";
 
 const container = {
   hidden: {},
@@ -13,11 +15,84 @@ const container = {
 };
 
 const item = {
-  hidden: { opacity: 0, x:-30 },
-  show: { opacity: 1, x: 0 },
+  hidden: { opacity: 0, x: -30 },
+  show: { opacity: 1, x: 0,
+        transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    }, },
+   };
+
+const item2 = {
+  hidden: { opacity: 0, x: -100 },
+  show: { opacity: 1, x: 0,
+        transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    }, },
+   };
+
+const item3 = {
+  hidden: { opacity: 0, x: 100 },
+  show: { opacity: 1, x: 0,
+        transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    }, },
+   };
+
+const item4 = {
+  hidden: { opacity: 0, y: 100 },
+  show: { opacity: 1, y: 0,     
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    }, },
 };
 
+const plans = [
+  {
+    name: "Básico",
+    price: "$2500",
+    description: "Página básica, sin animaciones, de visualización de contenido.",
+  },
+  {
+    name: "Profesional",
+    price: "$4000",
+    description: "Página de varias secciones, con animaciones sencillas y funcionalidades simples.",
+  },
+  {
+    name: "Premium",
+    price: "$7000",
+    description: "Página con secciones ilimitadas, optimizada siguiendo estándares de industria, con animaciones avanzadas y funcionalidades completas como catálogo de compras, registro de órdenes, pagos online, agendas, etc.",
+  },
+];
+
 export default function Hero() {
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "center",
+    loop: true,
+  });
+
+  useEffect(() => {
+  if (!emblaApi) return;
+
+  const onSelect = () => {
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  };
+
+  onSelect();
+
+  emblaApi.on("select", onSelect);
+
+  return () => {
+    emblaApi.off("select", onSelect);
+  };
+}, [emblaApi]);
+
   return (
   <>
   <div className="overflow-hidden bg-black text-white">
@@ -70,11 +145,25 @@ export default function Hero() {
                     <ScrollArrow/>
                 </motion.div>
             </motion.div>
+            
+            <motion.div variants={container}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.2 }}>
+              <motion.h3 className="justify-self-center text-2xl font-semibold mb-5 pt-20 lg:pt-35"
+                        variants={item4}>Nuestros servicios</motion.h3>
+              <motion.p className="justify-self-center text-center mx-15 mb-25"
+                        variants={item4}>Creamos una página web a la medida de tu negocio y acorde a sus necesidades, cualquier idea es realizable.</motion.p>
+            </motion.div>
 
-            <h3 className="justify-self-center text-3xl pt-35 mb-15 font-semibold">Nuestros servicios</h3>
 
-            <dl className="lg:grid lg:grid-cols-2 lg:grid-rows-2 gap-6 space-y-18 lg:mx-12 pb-45">
-              <div className="col-start-1 col-end-1 row-start-1 row-end-1 justify-items-center">
+            <motion.dl className="lg:grid lg:grid-cols-2 lg:grid-rows-2 gap-6 space-y-18 lg:mx-12"
+                        variants={container}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.2 }}>
+              <motion.div className="col-start-1 col-end-1 row-start-1 row-end-1 justify-items-center"
+                          variants={item3}>
                   <dt className="font-semibold justify-items-center my-4">
                   <img
                     src="https://img.icons8.com/?size=100&id=25991&format=png&color=ffffff"
@@ -82,9 +171,10 @@ export default function Hero() {
                   />
                     Diseño
                   </dt>
-                  <dd className="text-center mx-10 lg:mx-50">Realizamos el diseño de la página a partir de la estética e imagen del negocio.</dd>
-              </div>
-              <div className="col-start-2 col-end-2 row-start-1 row-end-1 justify-items-center">
+                  <dd className="text-center mx-10 text-xs lg:mx-50">Realizamos el diseño de la página a partir de la estética e imagen del negocio.</dd>
+              </motion.div>
+              <motion.div className="col-start-2 col-end-2 row-start-1 row-end-1 justify-items-center"
+                          variants={item2}>
                   <dt className="font-semibold justify-items-center my-4">
                   <img
                     src="https://img.icons8.com/?size=100&id=2778&format=png&color=ffffff"
@@ -92,11 +182,12 @@ export default function Hero() {
                   />
                     Programación
                   </dt>
-                  <dd className="text-center mx-10 lg:mx-50">Programamos la página siguiendo estándares de industria y buenas prácticas, logrando páginas que cargan rápido, se sienten fluidas
+                  <dd className="text-center mx-10 text-xs lg:mx-50">Programamos la página siguiendo estándares de industria y buenas prácticas, logrando páginas que cargan rápido, se sienten fluidas
                     y están optimizadas para aparecer en búsquedas de Google.
                   </dd>
-              </div>    
-              <div className="col-start-1 col-end-1 row-start-2 row-end-2 justify-items-center">
+              </motion.div>
+              <motion.div className="col-start-1 col-end-1 row-start-2 row-end-2 justify-items-center"
+                          variants={item3}>
                   <dt className="font-semibold justify-items-center my-4">
                   <img
                     src="https://img.icons8.com/?size=100&id=364&format=png&color=ffffff"
@@ -104,9 +195,10 @@ export default function Hero() {
                   />
                     Mantenimiento
                   </dt>
-                  <dd className="text-center mx-10 lg:mx-50">Ofrecemos mantenimiento permanente una vez publicada la página, garantizando su correcto funcionamiento y permitiendo hacerle cualquier cambio que se desee.</dd>
-              </div>    
-              <div className="col-start-2 col-end-2 row-start-2 row-end-2 justify-items-center">
+                  <dd className="text-center mx-10 text-xs lg:mx-50">Ofrecemos mantenimiento permanente una vez publicada la página, garantizando su correcto funcionamiento y permitiendo hacerle cualquier cambio que se desee.</dd>
+              </motion.div>
+              <motion.div className="col-start-2 col-end-2 row-start-2 row-end-2 justify-items-center"
+                          variants={item2}>
                   <dt className="font-semibold justify-items-center my-4">
                   <img
                     src="https://img.icons8.com/?size=100&id=6470&format=png&color=ffffff"
@@ -114,48 +206,125 @@ export default function Hero() {
                   />
                     Resultados
                   </dt>
-                  <dd className="text-center mx-10 lg:mx-50">Tu página va a ser una gran herramienta a la hora de atrapar nuevos clientes y mantener a los que ya tienes, expandiendo tu negocio y tus ganancias.</dd>
-              </div>   
-         </dl>
+                  <dd className="text-center mx-10 text-xs lg:mx-50">Tu página va a ser una gran herramienta a la hora de atrapar nuevos clientes y mantener a los que ya tienes, expandiendo tu negocio y tus ganancias.</dd>
+              </motion.div>
+            </motion.dl>
 
-         <h3 className="justify-self-center text-3xl mb-15 font-semibold">Herramientas utilizadas</h3>
+            <motion.div variants={container}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.2 }}>
+              <motion.h3 className="justify-self-center text-2xl mb-5 font-semibold pt-20 lg:pt-35"
+                        variants={item2}>Herramientas utilizadas</motion.h3>
+              <motion.p className="justify-self-center text-center mx-15 mb-25"
+                        variants={item2}>Trabajamos siguiendo los estándares de la industria del desarrollo web para garantizar resultados profesionales.</motion.p>
+            </motion.div>
 
-            <dl className="lg:grid lg:grid-cols-3 lg:grid-rows-1 gap-6 space-y-18 lg:mx-12 pb-32">
-              <div className="col-start-1 col-end-1 row-start-1 row-end-1 justify-items-center">
-                  <dt className="font-semibold justify-items-center my-4">
-                  <img
-                    src="https://img.icons8.com/?size=100&id=2916&format=png&color=ffffff"
-                    className="w-10 h-10 mb-2"
-                  />
-                    Photoshop
-                  </dt>
-                  <dd className="text-center mx-10 lg:mx-50">Usado para planificar el diseño, realizar logos, botones, secciones, etc.</dd>
-              </div>
-              <div className="col-start-2 col-end-2 justify-items-center">
-                  <dt className="font-semibold justify-items-center my-4 mt-10">
-                  <img
-                    src="https://img.icons8.com/?size=100&id=58811&format=png&color=ffffff"
-                    className="w-10 h-10 mb-2"
-                  />
-                    React
-                  </dt>
-                  <dd className="text-center mx-10 lg:mx-50">Entorno de programación web basado en HTML, CSS y TypeScript, usado para optimización automática de recursos, desarrollo ágil, animaciones fluidas, etc.
-                  </dd>
-              </div>    
-              <div className="col-start-3 col-end-3 justify-items-center">
-                  <dt className="font-semibold justify-items-center my-4">
-                  <img
-                    src="https://img.icons8.com/?size=100&id=eXVvv0ElyhQy&format=png&color=ffffff"
-                    className="w-10 h-10 mb-2"
-                  />
-                    Vercel
-                  </dt>
-                  <dd className="text-center mx-10 lg:mx-50">Plataforma de desarrollo donde publicamos la página a medida que se realiza. También permite comprar el dominio para la página (por ejemplo, jlan.com.uy) y hacer análisis de estadísticas de uso.
-                  </dd>
-              </div>    
-         </dl>
+         <motion.dl
+          className="lg:grid lg:grid-cols-3 lg:grid-rows-1 gap-6 space-y-18 lg:mx-12 pb-32"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <motion.div
+            variants={item4}
+            className="col-start-1 col-end-1 row-start-1 row-end-1 justify-items-center"
+          >
+            <dt className="font-semibold justify-items-center my-4">
+              <img
+                src="https://img.icons8.com/?size=100&id=2916&format=png&color=ffffff"
+                className="w-10 h-10 mb-2"
+              />
+              Photoshop
+            </dt>
+            <dd className="text-center mx-10 text-xs lg:mx-50">Usado para planificar el diseño, para realizar logos, botones o secciones, y para edición y manipulación de imágenes/fotografías.
+            </dd>
+          </motion.div>
 
+          <motion.div
+            variants={item4}
+            className="col-start-2 col-end-2 justify-items-center"
+          >
+            <dt className="font-semibold justify-items-center my-4 mt-15">
+              <img
+                src="https://img.icons8.com/?size=100&id=58811&format=png&color=ffffff"
+                className="w-10 h-10 mb-2"
+              />
+              React
+            </dt>
+            <dd className="text-center mx-10 text-xs lg:mx-50">Entorno de programación web basado en HTML, CSS y TypeScript, usado para optimización automática de recursos, 
+                desarrollo ágil, animaciones fluidas, etc.
+            </dd>
+          </motion.div>
+
+          <motion.div
+            variants={item4}
+            className="col-start-3 col-end-3 justify-items-center"
+          >
+            <dt className="font-semibold justify-items-center my-4">
+              <img
+                src="https://img.icons8.com/?size=100&id=eXVvv0ElyhQy&format=png&color=ffffff"
+                className="w-10 h-10 mb-2"
+              />
+              Vercel
+            </dt>
+            <dd className="text-center mx-10 text-xs lg:mx-50">Plataforma de desarrollo donde publicamos la página a medida que se realiza. 
+                También permite comprar el dominio para la página (por ejemplo, jlan.com.uy) y hacer análisis de estadísticas de uso.
+            </dd>
+          </motion.div>
+        </motion.dl>
       </div> 
+
+      <h3 className="justify-self-center text-2xl mb-15 font-semibold">Planes</h3>
+
+      <motion.div ref={emblaRef} className="overflow-hidden mb-35"
+          variants={item4}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}>
+        <div className="flex">
+          {plans.map((plan, index) => (
+            <div
+              key={plan.name}
+              className="flex-[0_0_85%] md:flex-[0_0_55%] px-4"
+            >
+              <motion.div
+                animate={{
+                  scale: selectedIndex === index ? 1 : 0.82,
+                  opacity: selectedIndex === index ? 1 : 0.35,
+                  y: selectedIndex === index ? 0 : 20,
+                }}
+                transition={{
+                  duration: 0.4,
+                }}
+                className={`
+                  rounded-3xl p-8 h-100
+                  ${
+                    selectedIndex === index
+                      ? "border-2"
+                      : "border border-white/10"
+                  }
+                  bg-zinc-900
+                `}
+              >
+                <h3 className="text-2xl font-semibold text-center">
+                  {plan.name}
+                </h3>
+
+                <p className="text-xl font-semibold mt-6 text-center">
+                  {plan.price}
+                </p>
+
+                <p className="text-zinc-400 mt-6 text-center">
+                  {plan.description}
+                </p>
+              </motion.div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+
     </div>
   </div>
   </>

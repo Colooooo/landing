@@ -57,7 +57,7 @@ export default function Navbar() {
 
   const links = [
     { name: "Sobre nosotros", path: "/login" },
-    { name: "Herramientas utilizadas", path: "/login" }
+    { name: "Herramientas utilizadas", path: "/" }
   ];
 
   return (
