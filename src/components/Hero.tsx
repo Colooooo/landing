@@ -396,7 +396,7 @@ export default function Hero() {
                     to={plan.link}
                     className="bg-black text-white"
                   >
-                        <button className="group relative border-4 justify-items-center border-white/50 text-white tracking-wide overflow-hidden transition-all duration-300 lg:text-xl lg:py-3 lg:px-15">
+                        <button className="group relative border-2 justify-items-center border-white/50 text-white tracking-wide overflow-hidden transition-all duration-300 lg:text-xl lg:py-3 lg:px-15">
 
                           {/* fondo animado sutil */}
                           <span className="absolute inset-0 bg-white/5 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
