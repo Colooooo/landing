@@ -53,18 +53,18 @@ const item4: Variants = {
 const plans = [
   {
     name: "Básico",
-    price: "$2500",
-    description: "Página básica, sin animaciones, de visualización de contenido.",
+    price: "$3000",
+    description: "Página de una sola sección, con animaciones simples, para visualización de contenido sin funcionalidades.",
   },
   {
     name: "Profesional",
-    price: "$4000",
-    description: "Página de varias secciones, con animaciones sencillas y funcionalidades simples.",
+    price: "$5000",
+    description: "Página de varias secciones, con animaciones complejas y funcionalidades simples.",
   },
   {
     name: "Premium",
     price: "$7000",
-    description: "Página con secciones ilimitadas, optimizada siguiendo estándares de industria, con animaciones avanzadas y funcionalidades completas como catálogo de compras, registro de órdenes, pagos online, agendas, etc.",
+    description: "Página con secciones ilimitadas, optimizada con varias herramientas, con animaciones avanzadas y funcionalidades completas como catálogos de compra, registro de órdenes, pagos online, agendas, etc.",
   },
 ];
 
@@ -269,8 +269,8 @@ export default function Hero() {
               />
               Vercel
             </dt>
-            <dd className="text-center mx-10 text-xs lg:mx-50">Plataforma de desarrollo donde publicamos la página a medida que se realiza. 
-                También permite comprar el dominio para la página (por ejemplo, jlan.com.uy) y hacer análisis de estadísticas de uso.
+            <dd className="text-center mx-10 text-xs lg:mx-50">Plataforma de desarrollo donde publicamos la página de forma privada a medida que se realiza, pudiendo el cliente supervisar el proceso desde su dispositivo en cualquier momento. 
+                También permite comprar el dominio para la página una vez publicada (por ejemplo, jlan.com.uy) y hacer análisis de estadísticas de uso.
             </dd>
           </motion.div>
         </motion.dl>
@@ -299,7 +299,7 @@ export default function Hero() {
                   duration: 0.4,
                 }}
                 className={`
-                  rounded-3xl p-8 h-100
+                  rounded-3xl p-8 h-100 
                   ${
                     selectedIndex === index
                       ? "border-2"
@@ -316,7 +316,7 @@ export default function Hero() {
                   {plan.price}
                 </p>
 
-                <p className="text-zinc-400 mt-6 text-center">
+                <p className="text-zinc-400 mt-25 text-center">
                   {plan.description}
                 </p>
               </motion.div>
