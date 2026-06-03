@@ -359,13 +359,13 @@ export default function Hero() {
                   rounded-3xl p-8
                   ${
                     selectedIndex === index
-                      ? "border-2"
+                      ? "border-4"
                       : "border border-white/10"
                   }
                   bg-zinc-900
                 `}
               >
-                <h3 className="text-2xl font-semibold text-center">
+                <h3 className="text-3xl font-semibold text-center">
                   {plan.name}
                 </h3>
 
@@ -373,7 +373,7 @@ export default function Hero() {
                   {plan.price}
                 </p>
 
-                <p className="mt-25 text-center font-semibold text-md">
+                <p className="mt-25 text-center text-md">
                   {plan.description}
                 </p>
 
