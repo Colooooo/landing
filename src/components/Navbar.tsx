@@ -56,8 +56,7 @@ export default function Navbar() {
   }, []);
 
   const links = [
-    { name: "Sobre nosotros", path: "/login" },
-    { name: "Herramientas utilizadas", path: "/" }
+    { name: "Pedir presupuesto", path: "/" },
   ];
 
   return (
