@@ -2,6 +2,9 @@ import ScrollArrow from "./ScrollArrow";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 import logo from "../assets/logoblanco.png";
+import cafeauroradesktop from "../assets/cafeauroradesktop.jpg";
+import ferreteria from "../assets/ferreteria.jpg";
+import barberia from "../assets/barberia.jpg";
 import useEmblaCarousel from "embla-carousel-react";
 import { useState, useEffect } from "react";
 
@@ -54,17 +57,71 @@ const plans = [
   {
     name: "Básico",
     price: "$3000",
+    image: cafeauroradesktop,
     description: "Página de una sola sección, con animaciones simples, para visualización de contenido sin funcionalidades.",
+    link: "https://cafeaurorauy.netlify.app/",
+
+    included: [
+      "1 sección principal",
+      "Diseño responsive",
+      "Formulario de contacto",
+      "Animaciones básicas",
+      "Optimización SEO básica",
+    ],
+
+    excluded: [
+      "Catálogo de productos",
+      "Pagos online",
+      "Agenda de reservas",
+      "Panel administrativo",
+      "Integraciones avanzadas",
+    ],
   },
+
   {
     name: "Profesional",
     price: "$5000",
-    description: "Página de varias secciones, con animaciones complejas y funcionalidades simples.",
+    image: barberia,
+    description:
+      "Página de varias secciones, con animaciones complejas y funcionalidades simples.",
+    link: "https://barberia-ruddy.vercel.app/",
+
+    included: [
+      "Múltiples secciones",
+      "Diseño responsive",
+      "Animaciones avanzadas",
+      "Formulario de contacto",
+      "SEO optimizado",
+      "Integraciones básicas",
+    ],
+
+    excluded: [
+      "Pagos online",
+      "Agenda de reservas",
+      "Panel administrativo",
+    ],
   },
+
   {
     name: "Premium",
     price: "$7000",
-    description: "Página con secciones ilimitadas, optimizada con varias herramientas, con animaciones avanzadas y funcionalidades completas como catálogos de compra, registro de órdenes, pagos online, agendas, etc.",
+    image: ferreteria,
+    description:
+      "Página con secciones ilimitadas, optimizada con varias herramientas, con animaciones avanzadas y funcionalidades completas como catálogos de compra, registro de órdenes, pagos online, agendas, etc.Solución completa para negocios que necesitan funcionalidades avanzadas.",
+    link: "https://paginas-sepia.vercel.app/",
+
+    included: [
+      "Secciones ilimitadas",
+      "Animaciones premium",
+      "Catálogo de productos",
+      "Pagos online",
+      "Agenda de reservas",
+      "Panel administrativo",
+      "Integraciones avanzadas",
+      "SEO avanzado",
+    ],
+
+    excluded: [],
   },
 ];
 
@@ -299,7 +356,7 @@ export default function Hero() {
                   duration: 0.4,
                 }}
                 className={`
-                  rounded-3xl p-8 h-100 
+                  rounded-3xl p-8
                   ${
                     selectedIndex === index
                       ? "border-2"
@@ -316,9 +373,62 @@ export default function Hero() {
                   {plan.price}
                 </p>
 
-                <p className="text-zinc-400 mt-25 text-center">
+                <p className="mt-25 text-center font-semibold text-md">
                   {plan.description}
                 </p>
+
+                <img src={plan.image}
+                     className="h-auto mt-15 border-4 border-black">
+                  
+                </img>
+
+                <div className="grid grid-cols-2 hidden">
+                  <p className="">
+                  {plan.included}
+                  </p>
+                  <p>
+                  {plan.excluded}
+                  </p>
+                </div>
+
+                <div className="mt-6 flex justify-center">
+                  <Link
+                    to={plan.link}
+                    className="bg-black text-white"
+                  >
+                        <button className="group relative border-2 justify-items-center border-white/50 text-white tracking-wide overflow-hidden transition-all duration-300 lg:text-xl lg:py-3 lg:px-15">
+
+                          {/* fondo animado sutil */}
+                          <span className="absolute inset-0 bg-white/5 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+
+                          {/* glow lateral */}
+                          <span className="hidden absolute -inset-px opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-sm" />
+
+                          {/* texto */}
+                          <span className="relative text-sm flex items-center gap-2">
+                            Ver ejemplo
+
+                            {/* flecha */}
+                            <svg
+                              className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M5 12h14m0 0l-4-4m4 4l-4 4"
+                              />
+                            </svg>
+                          </span>
+
+                          {/* borde glow fino */}
+                          <span className="hidden absolute inset-0 border border-white/10 group-hover:border-white/30 transition" />
+                        </button>
+                  </Link>
+                </div>
               </motion.div>
             </div>
           ))}
