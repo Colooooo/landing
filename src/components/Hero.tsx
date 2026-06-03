@@ -79,7 +79,7 @@ const plans = [
   },
 
   {
-    name: "Profesional",
+    name: "Avanzado",
     price: "$5000",
     image: barberia,
     description:
@@ -103,8 +103,8 @@ const plans = [
   },
 
   {
-    name: "Premium",
-    price: "$7000",
+    name: "Completo",
+    price: "$8000",
     image: ferreteria,
     description:
       "Página con secciones ilimitadas, optimizada con varias herramientas, con animaciones avanzadas y funcionalidades completas como catálogos de compra, registro de órdenes, pagos online, agendas, etc.",
@@ -333,9 +333,16 @@ export default function Hero() {
         </motion.dl>
       </div> 
 
-      <h3 className="justify-self-center text-2xl mb-15 font-semibold">Planes</h3>
 
-      <motion.div ref={emblaRef} className="overflow-hidden mb-35"
+      <motion.div className="overflow-hidden"
+          variants={item4}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}>
+            <h3 className="justify-self-center text-2xl mb-10 font-semibold">Planes</h3>
+          </motion.div>
+
+      <motion.div ref={emblaRef} className="overflow-hidden"
           variants={item4}
           initial="hidden"
           whileInView="show"
@@ -359,7 +366,7 @@ export default function Hero() {
                   rounded-3xl p-8
                   ${
                     selectedIndex === index
-                      ? "border-4"
+                      ? "border-2"
                       : "border border-white/10"
                   }
                   bg-zinc-900
@@ -369,16 +376,16 @@ export default function Hero() {
                   {plan.name}
                 </h3>
 
-                <p className="text-xl font-semibold mt-6 text-center">
+                <p className="text-xl font-semibold text-center">
                   {plan.price}
                 </p>
 
-                <p className="mt-25 text-center text-md">
+                <p className="mt-15 text-center text-md">
                   {plan.description}
                 </p>
 
                 <img src={plan.image}
-                     className="h-auto mt-15 border-4 border-black">
+                     className="h-auto mt-15 border-2 border-black">
                   
                 </img>
 
