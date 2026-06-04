@@ -5,6 +5,7 @@ import logo from "../assets/logoblanco.png";
 import cafeauroradesktop from "../assets/cafeauroradesktop.jpg";
 import ferreteria from "../assets/ferreteria.jpg";
 import barberia from "../assets/barberia.jpg";
+import supabaselogo from "../assets/supabaselogo.svg";
 import useEmblaCarousel from "embla-carousel-react";
 import { useState, useEffect } from "react";
 
@@ -206,19 +207,19 @@ export default function Hero() {
             <motion.div variants={container}
                         initial="hidden"
                         whileInView="show"
-                        viewport={{ once: true, amount: 0.2 }}>
+                        viewport={{ once: true, amount: 1 }}>
               <motion.h3 className="justify-self-center text-2xl font-semibold mb-5 pt-20 lg:pt-35"
                         variants={item4}>Nuestros servicios</motion.h3>
               <motion.p className="justify-self-center text-center mx-15 mb-25"
-                        variants={item4}>Creamos una página web a la medida de tu negocio y acorde a sus necesidades, cualquier idea es realizable.</motion.p>
+                        variants={item4}>Creamos una página web a la medida de tu negocio y acorde a sus necesidades. Cualquier idea es realizable.</motion.p>
             </motion.div>
 
 
-            <motion.dl className="lg:grid lg:grid-cols-2 lg:grid-rows-2 gap-6 space-y-18 lg:mx-12"
+            <motion.dl className="grid grid-cols-2 grid-rows-2 gap-6 space-y-18 lg:mx-12"
                         variants={container}
                         initial="hidden"
                         whileInView="show"
-                        viewport={{ once: true, amount: 0.2 }}>
+                        viewport={{ once: true, amount: 0.5 }}>
               <motion.div className="col-start-1 col-end-1 row-start-1 row-end-1 justify-items-center"
                           variants={item3}>
                   <dt className="font-semibold justify-items-center my-4">
@@ -270,7 +271,7 @@ export default function Hero() {
             <motion.div variants={container}
                         initial="hidden"
                         whileInView="show"
-                        viewport={{ once: true, amount: 0.2 }}>
+                        viewport={{ once: true, amount: 1 }}>
               <motion.h3 className="justify-self-center text-2xl mb-5 font-semibold pt-20 lg:pt-35"
                         variants={item2}>Herramientas utilizadas</motion.h3>
               <motion.p className="justify-self-center text-center mx-15 mb-25"
@@ -278,7 +279,7 @@ export default function Hero() {
             </motion.div>
 
          <motion.dl
-          className="lg:grid lg:grid-cols-3 lg:grid-rows-1 gap-6 space-y-18 lg:mx-12 pb-32"
+          className="lg:grid lg:grid-cols-4 lg:grid-rows-1 space-y-18 lg:mx-12 pb-32"
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -295,10 +296,11 @@ export default function Hero() {
               />
               Photoshop
             </dt>
-            <dd className="text-center mx-10 text-xs lg:mx-50">Usado para planificar el diseño, para realizar logos, botones o secciones, y para edición y manipulación de imágenes/fotografías.
+            <dd className="text-center mx-10 text-xs lg:mx-20">
+              Usado para planificar el diseño, para realizar logos, botones o secciones, y para edición y manipulación de imágenes/fotografías.
             </dd>
           </motion.div>
-
+          
           <motion.div
             variants={item4}
             className="col-start-2 col-end-2 justify-items-center"
@@ -310,14 +312,32 @@ export default function Hero() {
               />
               React
             </dt>
-            <dd className="text-center mx-10 text-xs lg:mx-50">Entorno de programación web basado en HTML, CSS y TypeScript, usado para optimización automática de recursos, 
-                desarrollo ágil, animaciones fluidas, etc.
+            <dd className="text-center mx-10 text-xs lg:mx-20">
+              Entorno de programación web basado en varios lenguajes como HTML, CSS y TypeScript, usado para optimización automática de recursos, 
+              desarrollo ágil, animaciones fluidas, etc.
             </dd>
           </motion.div>
 
           <motion.div
             variants={item4}
             className="col-start-3 col-end-3 justify-items-center"
+          >
+            <dt className="font-semibold justify-items-center my-4 mt-15">
+              <img
+                src={supabaselogo}
+                className="w-9 h-9 mb-2"
+              />
+              Supabase
+            </dt>
+            <dd className="text-center mx-10 text-xs lg:mx-20">
+              Base de datos que permite almacenar y gestionar información de forma segura, implementar formularios, 
+              autenticación de usuarios y funcionalidades dinámicas, asegurando escalabilidad y facilidad de mantenimiento a largo plazo.
+            </dd>
+          </motion.div>
+
+          <motion.div
+            variants={item4}
+            className="col-start-4 col-end-4 justify-items-center"
           >
             <dt className="font-semibold justify-items-center my-4">
               <img
@@ -326,8 +346,9 @@ export default function Hero() {
               />
               Vercel
             </dt>
-            <dd className="text-center mx-10 text-xs lg:mx-50">Plataforma de desarrollo donde publicamos la página de forma privada a medida que se realiza, pudiendo el cliente supervisar el proceso desde su dispositivo en cualquier momento. 
-                También permite comprar el dominio para la página una vez publicada (por ejemplo, jlan.com.uy) y hacer análisis de estadísticas de uso.
+            <dd className="text-center mx-10 text-xs lg:mx-20">
+              Plataforma de desarrollo donde publicamos la página de forma privada a medida que se realiza, pudiendo el cliente supervisar el proceso desde su dispositivo en cualquier momento. 
+              También permite comprar el dominio para la página una vez publicada (por ejemplo, jlan.com.uy) y hacer análisis de estadísticas de uso.
             </dd>
           </motion.div>
         </motion.dl>
@@ -338,15 +359,15 @@ export default function Hero() {
           variants={item4}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}>
+          viewport={{ once: true, amount: 1 }}>
             <h3 className="justify-self-center text-2xl mb-10 font-semibold">Planes</h3>
           </motion.div>
 
-      <motion.div ref={emblaRef} className="overflow-hidden"
+      <motion.div ref={emblaRef} className="overflow-hidden mb-15"
           variants={item4}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}>
+          viewport={{ once: true, amount: 0.1 }}>
         <div className="flex">
           {plans.map((plan, index) => (
             <div
@@ -412,7 +433,7 @@ export default function Hero() {
                           <span className="hidden absolute -inset-px opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-sm" />
 
                           {/* texto */}
-                          <span className="relative text-sm flex items-center gap-2">
+                          <span className="relative text-sm flex items-center gap-2 py-2 px-3">
                             Ver ejemplo
 
                             {/* flecha */}
