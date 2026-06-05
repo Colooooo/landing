@@ -2,12 +2,8 @@ import ScrollArrow from "./ScrollArrow";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 import logo from "../assets/logoblanco.png";
-import cafeauroradesktop from "../assets/cafeauroradesktop.jpg";
-import ferreteria from "../assets/ferreteria.jpg";
-import barberia from "../assets/barberia.jpg";
 import supabaselogo from "../assets/supabaselogo.svg";
-import useEmblaCarousel from "embla-carousel-react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 const container = {
   hidden: {},
@@ -54,86 +50,7 @@ const item4: Variants = {
     }, },
 };
 
-const plans = [
-  {
-    name: "Básico",
-    price: "$2500",
-    image: cafeauroradesktop,
-    description: "Página de una sola sección, con animaciones simples, para visualización de contenido sin funcionalidades.",
-    link: "https://cafeaurorauy.netlify.app/",
-
-    included: [
-      "1 sección principal",
-      "Diseño responsive",
-      "Formulario de contacto",
-      "Animaciones básicas",
-      "Optimización SEO básica",
-    ],
-
-    excluded: [
-      "Catálogo de productos",
-      "Pagos online",
-      "Agenda de reservas",
-      "Panel administrativo",
-      "Integraciones avanzadas",
-    ],
-  },
-
-  {
-    name: "Avanzado",
-    price: "$4000",
-    image: barberia,
-    description:
-      "Página de varias secciones, con animaciones complejas y funcionalidades simples.",
-    link: "https://barberia-ruddy.vercel.app/",
-
-    included: [
-      "Múltiples secciones",
-      "Diseño responsive",
-      "Animaciones avanzadas",
-      "Formulario de contacto",
-      "SEO optimizado",
-      "Integraciones básicas",
-    ],
-
-    excluded: [
-      "Pagos online",
-      "Agenda de reservas",
-      "Panel administrativo",
-    ],
-  },
-
-  {
-    name: "Completo",
-    price: "$7000",
-    image: ferreteria,
-    description:
-      "Página con secciones ilimitadas, optimizada con varias herramientas, con animaciones avanzadas y funcionalidades completas como catálogos de compra, registro de órdenes, pagos online, agendas, etc.",
-    link: "https://paginas-sepia.vercel.app/",
-
-    included: [
-      "Secciones ilimitadas",
-      "Animaciones premium",
-      "Catálogo de productos",
-      "Pagos online",
-      "Agenda de reservas",
-      "Panel administrativo",
-      "Integraciones avanzadas",
-      "SEO avanzado",
-    ],
-
-    excluded: [],
-  },
-];
-
 export default function Hero() {
-
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: "center",
-    loop: true,
-  });
 
   useEffect(() => {
   if (!emblaApi) return;
