@@ -57,7 +57,7 @@ const item4: Variants = {
 const plans = [
   {
     name: "Básico",
-    price: "$3000",
+    price: "$2500",
     image: cafeauroradesktop,
     description: "Página de una sola sección, con animaciones simples, para visualización de contenido sin funcionalidades.",
     link: "https://cafeaurorauy.netlify.app/",
@@ -81,7 +81,7 @@ const plans = [
 
   {
     name: "Avanzado",
-    price: "$5000",
+    price: "$4000",
     image: barberia,
     description:
       "Página de varias secciones, con animaciones complejas y funcionalidades simples.",
@@ -105,7 +105,7 @@ const plans = [
 
   {
     name: "Completo",
-    price: "$8000",
+    price: "$7000",
     image: ferreteria,
     description:
       "Página con secciones ilimitadas, optimizada con varias herramientas, con animaciones avanzadas y funcionalidades completas como catálogos de compra, registro de órdenes, pagos online, agendas, etc.",
@@ -354,114 +354,49 @@ export default function Hero() {
         </motion.dl>
       </div> 
 
-
-      <motion.div className="overflow-hidden"
+      <motion.div className="overflow-hidden pb-20"
           variants={item4}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 1 }}>
-            <h3 className="justify-self-center text-2xl mb-10 font-semibold">Planes</h3>
+          viewport={{ once: true, amount: 0.5 }}>
+            <h3 className="justify-self-center text-2xl mb-5 font-semibold">Nuestra forma de trabajo</h3>
+            <p className="justify-self-center text-base">
+              Pida un presupuesto inicial sin costo alguno para ver diseños preliminares de lo que podría llegar a ser la página de su negocio.
+
+            </p>
+            
+          <div className="mt-15 flex justify-center">
+              <Link
+                  to="/Presupuesto"
+                  className="bg-black text-white">
+                  <button className="group relative border-2 justify-items-center border-white/50 text-white tracking-wide overflow-hidden transition-all duration-300 lg:text-xl lg:py-3 lg:px-15">
+
+                    <span className="absolute inset-0 bg-white/5 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+
+                    <span className="hidden absolute -inset-px opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-sm" />
+
+                    <span className="relative text-sm flex items-center gap-2 py-2 px-3 lg:px-0 lg:py-0">
+                            Pedir presupuesto
+                        <svg
+                          className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M5 12h14m0 0l-4-4m4 4l-4 4"
+                          />
+                        </svg>
+                    </span>
+
+                    <span className="hidden absolute inset-0 border border-white/10 group-hover:border-white/30 transition" />
+                  </button>
+              </Link>
+          </div>
           </motion.div>
-
-      <motion.div ref={emblaRef} className="overflow-hidden mb-15"
-          variants={item4}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.1 }}>
-        <div className="flex">
-          {plans.map((plan, index) => (
-            <div
-              key={plan.name}
-              className="flex-[0_0_85%] md:flex-[0_0_55%] px-4"
-            >
-              <motion.div
-                animate={{
-                  scale: selectedIndex === index ? 1 : 0.82,
-                  opacity: selectedIndex === index ? 1 : 0.35,
-                  y: selectedIndex === index ? 0 : 20,
-                }}
-                transition={{
-                  duration: 0.4,
-                }}
-                className={`
-                  rounded-3xl p-8
-                  ${
-                    selectedIndex === index
-                      ? "border-2"
-                      : "border border-white/10"
-                  }
-                  bg-zinc-900
-                `}
-              >
-                <h3 className="text-3xl font-semibold text-center">
-                  {plan.name}
-                </h3>
-
-                <p className="text-xl font-semibold text-center">
-                  {plan.price}
-                </p>
-
-                <p className="mt-15 text-center text-md">
-                  {plan.description}
-                </p>
-
-                <img src={plan.image}
-                     className="h-auto mt-15 border-2 border-black">
-                  
-                </img>
-
-                <div className="grid grid-cols-2 hidden">
-                  <p className="">
-                  {plan.included}
-                  </p>
-                  <p>
-                  {plan.excluded}
-                  </p>
-                </div>
-
-                <div className="mt-6 flex justify-center">
-                  <Link
-                    to={plan.link}
-                    className="bg-black text-white"
-                  >
-                        <button className="group relative border-2 justify-items-center border-white/50 text-white tracking-wide overflow-hidden transition-all duration-300 lg:text-xl lg:py-3 lg:px-15">
-
-                          {/* fondo animado sutil */}
-                          <span className="absolute inset-0 bg-white/5 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
-
-                          {/* glow lateral */}
-                          <span className="hidden absolute -inset-px opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-sm" />
-
-                          {/* texto */}
-                          <span className="relative text-sm flex items-center gap-2 py-2 px-3">
-                            Ver ejemplo
-
-                            {/* flecha */}
-                            <svg
-                              className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M5 12h14m0 0l-4-4m4 4l-4 4"
-                              />
-                            </svg>
-                          </span>
-
-                          {/* borde glow fino */}
-                          <span className="hidden absolute inset-0 border border-white/10 group-hover:border-white/30 transition" />
-                        </button>
-                  </Link>
-                </div>
-              </motion.div>
-            </div>
-          ))}
-        </div>
-      </motion.div>
 
     </div>
   </div>

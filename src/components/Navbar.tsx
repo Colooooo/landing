@@ -56,7 +56,7 @@ export default function Navbar() {
   }, []);
 
   const links = [
-    { name: "Pedir presupuesto", path: "/" },
+    { name: "Pedir presupuesto", path: "/Presupuesto" },
   ];
 
   return (
@@ -79,7 +79,7 @@ export default function Navbar() {
           {/* LOGO */}
           <Link
             to="/"
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-3 hover:scale-x-103 transition"
           >
             <div className="relative">
               <img
@@ -87,8 +87,6 @@ export default function Navbar() {
                 className="h-8 ml-5"
                 alt="JLan"
               />
-
-              <div className="absolute inset-0 blur-xl bg-red-600/30 opacity-0 group-hover:opacity-100 transition" />
             </div>
 
             <span className="font-semibold tracking-wide text-l">
