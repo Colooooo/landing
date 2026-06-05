@@ -25,24 +25,6 @@ const item: Variants = {
     }, },
    };
 
-const item2: Variants = {
-  hidden: { opacity: 0, x: -100 },
-  show: { opacity: 1, x: 0,
-        transition: {
-      duration: 0.8,
-      ease: "easeInOut",
-    }, },
-   };
-
-const item3: Variants = {
-  hidden: { opacity: 0, x: 100 },
-  show: { opacity: 1, x: 0,
-        transition: {
-      duration: 0.8,
-      ease: "easeInOut",
-    }, },
-   };
-
 const item4: Variants = {
   hidden: { opacity: 0, y: 100 },
   show: { opacity: 1, y: 0,     
