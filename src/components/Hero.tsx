@@ -185,7 +185,7 @@ export default function Hero() {
                   <div className="absolute w-25 h-25 bg-white/30 blur-2xl rounded-full lg:w-35 lg:h-50" />
                     <img
                     src={logo}
-                    className="w-25 h-25 lg:w-40 lg:h-40"
+                    className="w-25 h-20 lg:w-40 lg:h-40"
                     />
                   </div>
                 </motion.div>
@@ -199,7 +199,7 @@ export default function Hero() {
                   <Link to="/agenda">
                   </Link>
                 </motion.div>
-                <motion.div className="flex justify-center mt-15" variants={item}>
+                <motion.div className="flex justify-center mt-10" variants={item}>
                     <ScrollArrow/>
                 </motion.div>
             </motion.div>
