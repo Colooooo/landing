@@ -3,7 +3,6 @@ import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 import logo from "../assets/logoblanco.png";
 import supabaselogo from "../assets/supabaselogo.svg";
-import { useEffect } from "react";
 
 const container = {
   hidden: {},
@@ -51,23 +50,6 @@ const item4: Variants = {
 };
 
 export default function Hero() {
-
-  useEffect(() => {
-  if (!emblaApi) return;
-
-  const onSelect = () => {
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  };
-
-  onSelect();
-
-  emblaApi.on("select", onSelect);
-
-  return () => {
-    emblaApi.off("select", onSelect);
-  };
-}, [emblaApi]);
-
   return (
   <>
   <div className="overflow-hidden bg-black text-white">
