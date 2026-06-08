@@ -164,7 +164,7 @@ export default function Hero() {
                   <div className="flex flex-col items-center mt-35">
                   <div className="absolute w-25 h-25 bg-white/30 blur-2xl rounded-full lg:w-30 lg:h-40" />
                     <img
-                    src="https://img.icons8.com/?size=100&id=Nrqb8Z7NYpFv&format=png&color=ffffff"
+                    src="https://img.icons8.com/?size=100&id=114490&format=png&color=ffffff"
                     className="w-25 h-20 lg:w-30 lg:h-30"
                     />
                   </div>
