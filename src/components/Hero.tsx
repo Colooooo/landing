@@ -3,6 +3,7 @@ import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 import logo from "../assets/logoblanco.png";
 import supabaselogo from "../assets/supabaselogo.svg";
+import PresupuestoComp from "../components/Presupuesto";
 
 const container = {
   hidden: {},
@@ -14,8 +15,8 @@ const container = {
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, x: -30 },
-  show: { opacity: 1, x: 0,
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0,
         transition: {
       duration: 0.8,
       ease: "easeInOut",
@@ -23,8 +24,8 @@ const item: Variants = {
    };
 
 const item2: Variants = {
-  hidden: { opacity: 0, x: -100 },
-  show: { opacity: 1, x: 0,
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0,
         transition: {
       duration: 0.8,
       ease: "easeInOut",
@@ -32,8 +33,8 @@ const item2: Variants = {
    };
 
 const item3: Variants = {
-  hidden: { opacity: 0, x: 100 },
-  show: { opacity: 1, x: 0,
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0,
         transition: {
       duration: 0.8,
       ease: "easeInOut",
@@ -60,9 +61,9 @@ export default function Hero() {
             animate="show"
             transition={ {duration: 3} }
             variants={container}
-            className="justify-items-center mt-18 h-[calc(100dvh-72px)]">           
+            className="mt-18 flex h-[calc(100dvh-72px)] flex-col items-center">
                 <motion.h2 className="text-base/7 font-semibold" variants={item}></motion.h2>
-                <motion.div className="flex items-center py-10" variants={item}>
+                <motion.div className="flex items-center justify-center py-10" variants={item}>
                 <AnimatePresence>
                 <motion.div
                     initial={{ opacity: 1, y: 0 }}
@@ -89,7 +90,6 @@ export default function Hero() {
                   </div>
                 </motion.div>
                 </AnimatePresence>
-                  <h1 className="hidden text-3xl font-bold ml-3 lg:text-5xl">JLan</h1>
                 </motion.div>
                 <motion.div className="pb-10" variants={item} >
                   <motion.p className="mt-10 text-md text-center lg:text-xl lg:mt-25" variants={item}>Impulsá tu negocio. Con nosotros es fácil.</motion.p>
@@ -103,14 +103,16 @@ export default function Hero() {
                 </motion.div>
             </motion.div>
             
-            <motion.div variants={container}
+            <motion.div
+                        className="flex flex-col items-center px-6"
+                        variants={container}
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, amount: 1 }}>
-              <motion.h3 className="justify-self-center text-2xl font-semibold mb-5 pt-20 lg:pt-35"
+              <motion.h3 className="text-center text-2xl font-semibold mb-5 pt-20 lg:pt-35"
                         variants={item4}>Nuestros servicios</motion.h3>
-              <motion.p className="justify-self-center text-center mx-15 mb-25"
-                        variants={item4}>Creamos una página web a la medida de tu negocio y acorde a sus necesidades. Cualquier idea es realizable.</motion.p>
+              <motion.p className="max-w-2xl text-center mb-25"
+                        variants={item4}>Desarrollamos páginas web para negocios, acorde a sus necesidades. Cualquier idea es realizable.</motion.p>
             </motion.div>
 
 
@@ -119,9 +121,9 @@ export default function Hero() {
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, amount: 0.5 }}>
-              <motion.div className="col-start-1 col-end-1 row-start-1 row-end-1 justify-items-center"
+              <motion.div className="col-start-1 col-end-1 row-start-1 row-end-1 flex flex-col items-center"
                           variants={item3}>
-                  <dt className="font-semibold justify-items-center my-4">
+                  <dt className="my-4 flex flex-col items-center text-center font-semibold">
                   <img
                     src="https://img.icons8.com/?size=100&id=25991&format=png&color=ffffff"
                     className="w-10 h-10 mb-2"
@@ -130,9 +132,9 @@ export default function Hero() {
                   </dt>
                   <dd className="text-center mx-10 text-xs lg:mx-50">Realizamos el diseño de la página a partir de la estética e imagen del negocio.</dd>
               </motion.div>
-              <motion.div className="col-start-2 col-end-2 row-start-1 row-end-1 justify-items-center"
+              <motion.div className="col-start-2 col-end-2 row-start-1 row-end-1 flex flex-col items-center"
                           variants={item2}>
-                  <dt className="font-semibold justify-items-center my-4">
+                  <dt className="my-4 flex flex-col items-center text-center font-semibold">
                   <img
                     src="https://img.icons8.com/?size=100&id=2778&format=png&color=ffffff"
                     className="w-10 h-10 mb-2"
@@ -143,20 +145,20 @@ export default function Hero() {
                     y están optimizadas para aparecer en búsquedas de Google.
                   </dd>
               </motion.div>
-              <motion.div className="col-start-1 col-end-1 row-start-2 row-end-2 justify-items-center"
+              <motion.div className="col-start-1 col-end-1 row-start-2 row-end-2 flex flex-col items-center"
                           variants={item3}>
-                  <dt className="font-semibold justify-items-center my-4">
+                  <dt className="my-4 flex flex-col items-center text-center font-semibold">
                   <img
                     src="https://img.icons8.com/?size=100&id=364&format=png&color=ffffff"
                     className="w-10 h-10 mb-2"
                   />
                     Mantenimiento
                   </dt>
-                  <dd className="text-center mx-10 text-xs lg:mx-50">Ofrecemos mantenimiento permanente una vez publicada la página, garantizando su correcto funcionamiento y permitiendo hacerle cualquier cambio que se desee.</dd>
+                  <dd className="text-center mx-10 text-xs lg:mx-50">Ofrecemos mantenimiento permanente una vez publicada la página, garantizando su correcto funcionamiento y permitiendo realizar cualquier cambio deseado.</dd>
               </motion.div>
-              <motion.div className="col-start-2 col-end-2 row-start-2 row-end-2 justify-items-center"
+              <motion.div className="col-start-2 col-end-2 row-start-2 row-end-2 flex flex-col items-center"
                           variants={item2}>
-                  <dt className="font-semibold justify-items-center my-4">
+                  <dt className="my-4 flex flex-col items-center text-center font-semibold">
                   <img
                     src="https://img.icons8.com/?size=100&id=6470&format=png&color=ffffff"
                     className="w-10 h-10 mb-2"
@@ -167,13 +169,15 @@ export default function Hero() {
               </motion.div>
             </motion.dl>
 
-            <motion.div variants={container}
+            <motion.div
+                        className="flex flex-col items-center px-6"
+                        variants={container}
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, amount: 1 }}>
-              <motion.h3 className="justify-self-center text-2xl mb-5 font-semibold pt-20 lg:pt-35"
+              <motion.h3 className="text-center text-2xl mb-5 font-semibold pt-20 lg:pt-35"
                         variants={item2}>Herramientas utilizadas</motion.h3>
-              <motion.p className="justify-self-center text-center mx-15 mb-25"
+              <motion.p className="max-w-2xl text-center mb-25"
                         variants={item2}>Trabajamos siguiendo los estándares de la industria del desarrollo web para garantizar resultados profesionales.</motion.p>
             </motion.div>
 
@@ -186,9 +190,9 @@ export default function Hero() {
         >
           <motion.div
             variants={item4}
-            className="col-start-1 col-end-1 row-start-1 row-end-1 justify-items-center"
+            className="col-start-1 col-end-1 row-start-1 row-end-1 flex flex-col items-center"
           >
-            <dt className="font-semibold justify-items-center my-4">
+            <dt className="my-4 flex flex-col items-center text-center font-semibold">
               <img
                 src="https://img.icons8.com/?size=100&id=2916&format=png&color=ffffff"
                 className="w-10 h-10 mb-2"
@@ -202,9 +206,9 @@ export default function Hero() {
           
           <motion.div
             variants={item4}
-            className="col-start-2 col-end-2 justify-items-center"
+            className="col-start-2 col-end-2 flex flex-col items-center"
           >
-            <dt className="font-semibold justify-items-center my-4 mt-15">
+            <dt className="my-4 mt-15 flex flex-col items-center text-center font-semibold">
               <img
                 src="https://img.icons8.com/?size=100&id=58811&format=png&color=ffffff"
                 className="w-10 h-10 mb-2"
@@ -219,9 +223,9 @@ export default function Hero() {
 
           <motion.div
             variants={item4}
-            className="col-start-3 col-end-3 justify-items-center"
+            className="col-start-3 col-end-3 flex flex-col items-center"
           >
-            <dt className="font-semibold justify-items-center my-4 mt-15">
+            <dt className="my-4 mt-15 flex flex-col items-center text-center font-semibold">
               <img
                 src={supabaselogo}
                 className="w-9 h-9 mb-2"
@@ -229,16 +233,16 @@ export default function Hero() {
               Supabase
             </dt>
             <dd className="text-center mx-10 text-xs lg:mx-20">
-              Base de datos que permite almacenar y gestionar información de forma segura, implementar formularios, 
-              autenticación de usuarios y funcionalidades dinámicas, asegurando escalabilidad y facilidad de mantenimiento a largo plazo.
+              Plataforma de bases de datos que permite almacenar y gestionar información de forma segura, implementar formularios, 
+              autenticación de usuarios, y demás funcionalidades donde se deban guardar archivos. Asegura fácil mantenimiento y escalabilidad. 
             </dd>
           </motion.div>
 
           <motion.div
             variants={item4}
-            className="col-start-4 col-end-4 justify-items-center"
+            className="col-start-4 col-end-4 flex flex-col items-center"
           >
-            <dt className="font-semibold justify-items-center my-4">
+            <dt className="my-4 flex flex-col items-center text-center font-semibold">
               <img
                 src="https://img.icons8.com/?size=100&id=eXVvv0ElyhQy&format=png&color=ffffff"
                 className="w-10 h-10 mb-2"
@@ -253,14 +257,15 @@ export default function Hero() {
         </motion.dl>
       </div> 
 
-      <motion.div className="overflow-hidden pb-20"
+      <motion.div className="flex flex-col items-center overflow-hidden px-6 pb-20"
           variants={item4}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.5 }}>
-            <h3 className="justify-self-center text-2xl mb-5 font-semibold">Nuestra forma de trabajo</h3>
-            <p className="justify-self-center text-base">
-              Pida un presupuesto inicial sin costo alguno para ver diseños preliminares de lo que podría llegar a ser la página de su negocio.
+            <h3 className="text-center text-2xl mb-5 font-semibold">Nuestra forma de trabajo</h3>
+            <p className="max-w-2xl text-center text-base">
+              Revisá nuestros planes, cada uno con su página de ejemplo, para ver lo que puedes esperar de nosotros
+              y pide un presupuesto para tu negocio, según lo que tengas en mente, sin costo alguno.
 
             </p>
             
@@ -268,14 +273,14 @@ export default function Hero() {
               <Link
                   to="/Presupuesto"
                   className="bg-black text-white">
-                  <button className="group relative border-2 justify-items-center border-white/50 text-white tracking-wide overflow-hidden transition-all duration-300 lg:text-xl lg:py-3 lg:px-15">
+                  <button className="group relative border-2 border-white/50 text-white tracking-wide overflow-hidden transition-all duration-300 lg:text-xl lg:py-3 lg:px-15">
 
                     <span className="absolute inset-0 bg-white/5 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
 
                     <span className="hidden absolute -inset-px opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-sm" />
 
                     <span className="relative text-sm flex items-center gap-2 py-2 px-3 lg:px-0 lg:py-0">
-                            Pedir presupuesto
+                            Ver planes
                         <svg
                           className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
                           fill="none"
@@ -298,6 +303,7 @@ export default function Hero() {
           </motion.div>
 
     </div>
+          <PresupuestoComp/>
   </div>
   </>
   );

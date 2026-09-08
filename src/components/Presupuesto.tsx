@@ -17,8 +17,8 @@ const container = {
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, x: -30 },
-  show: { opacity: 1, x: 0,
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0,
         transition: {
       duration: 0.8,
       ease: "easeInOut",
@@ -141,9 +141,9 @@ export default function Hero() {
             animate="show"
             transition={ {duration: 3} }
             variants={container}
-            className="justify-items-center mt-18 h-[calc(100dvh-72px)]">           
+            className="mt-18 flex h-[calc(100dvh-72px)] flex-col items-center">
                 <motion.h2 className="text-base/7 font-semibold" variants={item}></motion.h2>
-                <motion.div className="flex items-center py-10" variants={item}>
+                <motion.div className="flex items-center justify-center py-10" variants={item}>
                 <AnimatePresence>
                 <motion.div
                     initial={{ opacity: 1, y: 0 }}
@@ -186,13 +186,13 @@ export default function Hero() {
       </div> 
 
 
-      <motion.div className="overflow-hidden"
+      <motion.div className="flex flex-col items-center overflow-hidden px-6"
           variants={item4}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 1 }}>
-            <h3 className="justify-self-center text-2xl mb-2 font-semibold">Planes</h3>
-            <p className="justify-self-center text-base mb-10">Nuestros precios se ajustan a tu negocio, consulte por su presupuesto sin compromiso.</p>
+            <h3 className="text-center text-2xl mb-2 font-semibold">Planes</h3>
+            <p className="max-w-2xl text-center text-base mb-10">Nuestros precios se ajustan a tu negocio, consulte por su presupuesto sin compromiso.</p>
           </motion.div>
 
       <motion.div ref={emblaRef} className="overflow-hidden"
@@ -256,7 +256,7 @@ export default function Hero() {
                     to={plan.link}
                     className="bg-black text-white"
                   >
-                        <button className="group relative border-2 justify-items-center border-white/50 text-white tracking-wide overflow-hidden transition-all duration-300 lg:text-xl lg:py-3 lg:px-15">
+                        <button className="group relative border-2 border-white/50 text-white tracking-wide overflow-hidden transition-all duration-300 lg:text-xl lg:py-3 lg:px-15">
 
                           {/* fondo animado sutil */}
                           <span className="absolute inset-0 bg-white/5 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
