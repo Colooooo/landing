@@ -1,306 +1,194 @@
-import ScrollArrow from "./ScrollArrow";
-import { motion, AnimatePresence, type Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
+import ScrollArrow from "./ScrollArrow";
 import logo from "../assets/logoblanco.png";
 import supabaselogo from "../assets/supabaselogo.svg";
 
-const container = {
-  hidden: {},
+const reveal: Variants = {
+  hidden: { opacity: 0, y: 28 },
   show: {
-    transition: {
-      staggerChildren: 0.5, // delay entre hijos
-    },
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
   },
 };
 
-const item: Variants = {
-  hidden: { opacity: 0, x: -30 },
-  show: { opacity: 1, x: 0,
-        transition: {
-      duration: 0.8,
-      ease: "easeInOut",
-    }, },
-   };
-
-const item2: Variants = {
-  hidden: { opacity: 0, x: -100 },
-  show: { opacity: 1, x: 0,
-        transition: {
-      duration: 0.8,
-      ease: "easeInOut",
-    }, },
-   };
-
-const item3: Variants = {
-  hidden: { opacity: 0, x: 100 },
-  show: { opacity: 1, x: 0,
-        transition: {
-      duration: 0.8,
-      ease: "easeInOut",
-    }, },
-   };
-
-const item4: Variants = {
-  hidden: { opacity: 0, y: 100 },
-  show: { opacity: 1, y: 0,     
-    transition: {
-      duration: 0.8,
-      ease: "easeInOut",
-    }, },
+const stagger: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12 } },
 };
+
+const services = [
+  {
+    title: "Diseño",
+    icon: "https://img.icons8.com/?size=100&id=25991&format=png&color=ffffff",
+    description:
+      "Realizamos el diseño de la página a partir de la estética e imagen del negocio, y diseñamos tarjetas personalizadas con código QR para fácil acceso y promoción.",
+  },
+  {
+    title: "Programación",
+    icon: "https://img.icons8.com/?size=100&id=2778&format=png&color=ffffff",
+    description:
+      "Programamos la página siguiendo estándares de industria y buenas prácticas, logrando páginas rápidas, fluidas y optimizadas para aparecer en búsquedas de Google.",
+  },
+  {
+    title: "Mantenimiento",
+    icon: "https://img.icons8.com/?size=100&id=364&format=png&color=ffffff",
+    description:
+      "Ofrecemos mantenimiento permanente una vez publicada la página, garantizando su correcto funcionamiento y permitiendo realizar cualquier cambio deseado.",
+  },
+  {
+    title: "Resultados",
+    icon: "https://img.icons8.com/?size=100&id=6470&format=png&color=ffffff",
+    description:
+      "Tu página será una gran herramienta para atraer nuevos clientes, mantener a los actuales y hacer crecer tu negocio.",
+  },
+];
+
+const tools = [
+  {
+    title: "Photoshop",
+    icon: "https://img.icons8.com/?size=100&id=2916&format=png&color=ffffff",
+    description:
+      "Lo usamos para planificar el diseño, crear logos y piezas visuales, y editar imágenes y fotografías.",
+  },
+  {
+    title: "React",
+    icon: "https://img.icons8.com/?size=100&id=58811&format=png&color=ffffff",
+    description:
+      "Nos permite construir interfaces ágiles, animaciones fluidas y experiencias rápidas en cada dispositivo.",
+  },
+  {
+    title: "Supabase",
+    icon: supabaselogo,
+    description:
+      "Plataforma para almacenar y gestionar datos de forma segura, implementar formularios y agregar funcionalidades escalables.",
+  },
+  {
+    title: "Vercel",
+    icon: "https://img.icons8.com/?size=100&id=eXVvv0ElyhQy&format=png&color=ffffff",
+    description:
+      "Publicamos versiones privadas durante el desarrollo para que puedas supervisar el avance desde cualquier dispositivo.",
+  },
+];
+
+type ExpandableCardProps = {
+  title: string;
+  icon: string;
+  description: string;
+  open?: boolean;
+};
+
+function ExpandableCard({ title, icon, description, open = false }: ExpandableCardProps) {
+  return (
+    <details
+      open={open}
+      className="group overflow-hidden border border-white/10 bg-white/[0.035] transition-colors open:border-red-500/60 open:bg-white/[0.06]"
+    >
+      <summary className="flex cursor-pointer list-none items-center gap-4 px-5 py-4 marker:content-none [&::-webkit-details-marker]:hidden">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center border border-white/10 bg-black/30">
+          <img src={icon} alt="" className="h-6 w-6 object-contain" />
+        </span>
+        <span className="min-w-0 flex-1 text-left font-semibold">{title}</span>
+        <span
+          aria-hidden="true"
+          className="flex h-7 w-7 shrink-0 items-center justify-center border border-white/15 text-lg leading-none transition-transform duration-200 group-open:rotate-45"
+        >
+          +
+        </span>
+      </summary>
+      <div className="border-t border-white/10 px-5 py-4">
+        <p className="text-sm leading-6 text-white/70">{description}</p>
+      </div>
+    </details>
+  );
+}
 
 export default function Hero() {
   return (
-  <>
-  <div className="overflow-hidden bg-black text-white">
-    <div className="mx-auto grid grid-cols-1 lg:mx-0 lg:max-w-none">
-          <div className="lg:bg-cover bg-[linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,1)),url('https://images.unsplash.com/photo-1652717249447-293e8205c000?q=80&w=3000&auto=format&fit=cover')]">
-            <motion.div
-            initial="hidden"
-            animate="show"
-            transition={ {duration: 3} }
-            variants={container}
-            className="justify-items-center mt-18 h-[calc(100dvh-72px)]">           
-                <motion.h2 className="text-base/7 font-semibold" variants={item}></motion.h2>
-                <motion.div className="flex items-center py-10" variants={item}>
-                <AnimatePresence>
-                <motion.div
-                    initial={{ opacity: 1, y: 0 }}
-                    animate={{
-                      opacity: 1,
-                      y: [0, 20, 0],
-                    }}
-                    exit={{ opacity: 0, y: 40 }}
-                    transition={{
-                      opacity: { duration: 1.5 },
-                      y: {
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      },
-                    }}
-                    className="relative z-10">
-                  <div className="flex flex-col items-center mt-35">
-                  <div className="absolute w-25 h-25 bg-white/30 blur-2xl rounded-full lg:w-35 lg:h-50" />
-                    <img
-                    src={logo}
-                    className="w-20 h-20 lg:w-40 lg:h-40"
-                    />
-                  </div>
-                </motion.div>
-                </AnimatePresence>
-                </motion.div>
-                <motion.div className="pb-10" variants={item} >
-                  <motion.p className="mt-10 text-md text-center lg:text-xl lg:mt-25" variants={item}>Impulsá tu negocio. Con nosotros es fácil.</motion.p>
-                </motion.div>
-                <motion.div className="flex justify-center mt-5" variants={item} >
-                  <Link to="/agenda">
-                  </Link>
-                </motion.div>
-                <motion.div className="flex justify-center mt-10" variants={item}>
-                    <ScrollArrow/>
-                </motion.div>
-            </motion.div>
-            
-            <motion.div variants={container}
-                        initial="hidden"
-                        whileInView="show"
-                        viewport={{ once: true, amount: 1 }}>
-              <motion.h3 className="justify-self-center text-xl font-semibold mb-5 pt-20 lg:pt-35 lg:text-2xl"
-                        variants={item4}>Nuestros servicios</motion.h3>
-              <motion.p className="justify-self-center text-sm text-center mx-15 mb-25 lg:text-md"
-                        variants={item4}>Desarrollamos páginas web para negocios acorde a sus necesidades. Cualquier idea es realizable.</motion.p>
-            </motion.div>
-
-
-            <motion.dl className="grid grid-cols-2 grid-rows-2 gap-6 space-y-18 lg:mx-12"
-                        variants={container}
-                        initial="hidden"
-                        whileInView="show"
-                        viewport={{ once: true, amount: 0.5 }}>
-              <motion.div className="col-start-1 col-end-1 row-start-1 row-end-1 justify-items-center"
-                          variants={item3}>
-                  <dt className="font-semibold justify-items-center my-4">
-                  <img
-                    src="https://img.icons8.com/?size=100&id=25991&format=png&color=ffffff"
-                    className="w-10 h-10 mb-2"
-                  />
-                    Diseño
-                  </dt>
-                  <dd className="text-center mx-10 text-xs lg:mx-50">Realizamos el diseño de la página a partir de la estética e imagen del negocio, y
-                                                                     diseñamos tarjetas personalizadas con código QR para fácil acceso y promoción.
-                  </dd>
-              </motion.div>
-              <motion.div className="col-start-2 col-end-2 row-start-1 row-end-1 justify-items-center"
-                          variants={item2}>
-                  <dt className="font-semibold justify-items-center my-4">
-                  <img
-                    src="https://img.icons8.com/?size=100&id=2778&format=png&color=ffffff"
-                    className="w-10 h-10 mb-2"
-                  />
-                    Programación
-                  </dt>
-                  <dd className="text-center mx-10 text-xs lg:mx-50">Programamos la página siguiendo estándares de industria y buenas prácticas, logrando páginas que cargan rápido, se sienten fluidas
-                    y están optimizadas para aparecer en búsquedas de Google.
-                  </dd>
-              </motion.div>
-              <motion.div className="col-start-1 col-end-1 row-start-2 row-end-2 justify-items-center"
-                          variants={item3}>
-                  <dt className="font-semibold justify-items-center my-4">
-                  <img
-                    src="https://img.icons8.com/?size=100&id=364&format=png&color=ffffff"
-                    className="w-10 h-10 mb-2"
-                  />
-                    Mantenimiento
-                  </dt>
-                  <dd className="text-center mx-10 text-xs lg:mx-50">Ofrecemos mantenimiento permanente una vez publicada la página, garantizando su correcto funcionamiento y permitiendo realizar cualquier cambio deseado.</dd>
-              </motion.div>
-              <motion.div className="col-start-2 col-end-2 row-start-2 row-end-2 justify-items-center"
-                          variants={item2}>
-                  <dt className="font-semibold justify-items-center my-4">
-                  <img
-                    src="https://img.icons8.com/?size=100&id=6470&format=png&color=ffffff"
-                    className="w-10 h-10 mb-2"
-                  />
-                    Resultados
-                  </dt>
-                  <dd className="text-center mx-10 text-xs lg:mx-50">Tu página va a ser una gran herramienta a la hora de atrapar nuevos clientes y mantener a los que ya tienes, expandiendo tu negocio y tus ganancias.</dd>
-              </motion.div>
-            </motion.dl>
-
-            <motion.div variants={container}
-                        initial="hidden"
-                        whileInView="show"
-                        viewport={{ once: true, amount: 1 }}>
-              <motion.h3 className="justify-self-center text-xl mb-5 font-semibold pt-20 lg:pt-35"
-                        variants={item2}>Herramientas utilizadas</motion.h3>
-              <motion.p className="justify-self-center text-smtext-center mx-15 mb-25"
-                        variants={item2}>Trabajamos siguiendo los estándares de la industria del desarrollo web para garantizar resultados profesionales.</motion.p>
-            </motion.div>
-
-         <motion.dl
-          className="lg:grid lg:grid-cols-4 lg:grid-rows-1 space-y-18 lg:mx-12 pb-32"
-          variants={container}
+    <main className="overflow-x-clip bg-black text-white">
+      <section className="min-h-[calc(100svh-72px)] bg-[linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,1)),url('https://images.unsplash.com/photo-1652717249447-293e8205c000?q=80&w=3000&auto=format&fit=cover')] bg-cover bg-center pt-18">
+        <motion.div
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
+          animate="show"
+          variants={stagger}
+          className="mx-auto flex min-h-[calc(100svh-72px)] max-w-3xl flex-col items-center justify-center px-6 pb-16 text-center"
         >
-          <motion.div
-            variants={item4}
-            className="col-start-1 col-end-1 row-start-1 row-end-1 justify-items-center"
-          >
-            <dt className="font-semibold justify-items-center my-4">
-              <img
-                src="https://img.icons8.com/?size=100&id=2916&format=png&color=ffffff"
-                className="w-10 h-10 mb-2"
-              />
-              Photoshop
-            </dt>
-            <dd className="text-center mx-10 text-xs lg:mx-20">
-              Usado para planificar el diseño, para realizar logos, botones o secciones, y para edición y manipulación de imágenes/fotografías.
-            </dd>
+          <motion.div variants={reveal} className="relative mb-12">
+            <div className="absolute inset-0 scale-125 rounded-full bg-white/20 blur-2xl" />
+            <img src={logo} alt="JL Marketing" className="relative h-24 w-24 object-contain sm:h-32 sm:w-32" />
           </motion.div>
-          
-          <motion.div
-            variants={item4}
-            className="col-start-2 col-end-2 justify-items-center"
-          >
-            <dt className="font-semibold justify-items-center my-4 mt-15">
-              <img
-                src="https://img.icons8.com/?size=100&id=58811&format=png&color=ffffff"
-                className="w-10 h-10 mb-2"
-              />
-              React
-            </dt>
-            <dd className="text-center mx-10 text-xs lg:mx-20">
-              Entorno de programación web basado en varios lenguajes como HTML, CSS y TypeScript, usado para optimización automática de recursos, 
-              desarrollo ágil, animaciones fluidas, etc.
-            </dd>
+          <motion.p variants={reveal} className="max-w-xl text-lg leading-8 text-white/90 sm:text-xl">
+            Impulsá tu negocio. Con nosotros es fácil.
+          </motion.p>
+          <motion.div variants={reveal} className="mt-14">
+            <ScrollArrow />
           </motion.div>
+        </motion.div>
+      </section>
 
-          <motion.div
-            variants={item4}
-            className="col-start-3 col-end-3 justify-items-center"
-          >
-            <dt className="font-semibold justify-items-center my-4 mt-15">
-              <img
-                src={supabaselogo}
-                className="w-9 h-9 mb-2"
-              />
-              Supabase
-            </dt>
-            <dd className="text-center mx-10 text-xs lg:mx-20">
-              Plataforma de bases de datos que permite almacenar y gestionar información de forma segura, implementar formularios, 
-              autenticación de usuarios, y demás funcionalidades donde se deban guardar archivos. Asegura fácil mantenimiento y escalabilidad. 
-            </dd>
-          </motion.div>
-
-          <motion.div
-            variants={item4}
-            className="col-start-4 col-end-4 justify-items-center"
-          >
-            <dt className="font-semibold justify-items-center my-4">
-              <img
-                src="https://img.icons8.com/?size=100&id=eXVvv0ElyhQy&format=png&color=ffffff"
-                className="w-10 h-10 mb-2"
-              />
-              Vercel
-            </dt>
-            <dd className="text-center mx-10 text-xs lg:mx-20">
-              Plataforma de desarrollo donde publicamos la página de forma privada a medida que se realiza, pudiendo el cliente supervisar el proceso desde su dispositivo en cualquier momento. 
-              También permite comprar el dominio para la página una vez publicada (por ejemplo, jlan.com.uy) y hacer análisis de estadísticas de uso.
-            </dd>
-          </motion.div>
-        </motion.dl>
-      </div> 
-
-      <motion.div className="overflow-hidden pb-20"
-          variants={item4}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.5 }}>
-            <h3 className="justify-self-center text-xl mb-5 font-semibold">Nuestra forma de trabajo</h3>
-            <p className="justify-self-center text-sm text-base text-center mx-10">
-              Revisá nuestros planes, cada uno con su página de ejemplo, para ver lo que puedes esperar de nosotros
-              y pide un presupuesto para tu negocio, según lo que tengas en mente, sin costo alguno.
-
+      <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
+        <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
+          <motion.div variants={reveal} className="mx-auto mb-10 max-w-2xl text-center">
+            <p className="mb-3 text-sm font-medium text-red-400">LO QUE HACEMOS</p>
+            <h2 className="text-2xl font-semibold sm:text-3xl">Nuestros servicios</h2>
+            <p className="mt-4 text-sm leading-6 text-white/70 sm:text-base">
+              Desarrollamos páginas web para negocios acorde a sus necesidades. Cualquier idea es realizable.
             </p>
-            
-          <div className="mt-15 flex justify-center">
-              <Link
-                  to="/Presupuesto"
-                  className="bg-black text-white">
-                  <button className="group relative border-2 justify-items-center border-white/50 text-white tracking-wide overflow-hidden transition-all duration-300 lg:text-xl lg:py-3 lg:px-15">
-
-                    <span className="absolute inset-0 bg-white/5 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
-
-                    <span className="hidden absolute -inset-px opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-sm" />
-
-                    <span className="relative text-sm flex items-center gap-2 py-2 px-3 lg:px-0 lg:py-0">
-                            Ver planes
-                        <svg
-                          className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M5 12h14m0 0l-4-4m4 4l-4 4"
-                          />
-                        </svg>
-                    </span>
-
-                    <span className="hidden absolute inset-0 border border-white/10 group-hover:border-white/30 transition" />
-                  </button>
-              </Link>
-          </div>
           </motion.div>
+          <motion.div variants={stagger} className="grid gap-3 md:grid-cols-2">
+            {services.map((service, index) => (
+              <motion.div key={service.title} variants={reveal}>
+                <ExpandableCard {...service} open={index === 0} />
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </section>
 
-    </div>
-  </div>
-  </>
+      <section className="border-y border-white/10 bg-white/[0.025]">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.15 }} variants={stagger}>
+            <motion.div variants={reveal} className="mx-auto mb-10 max-w-2xl text-center">
+              <p className="mb-3 text-sm font-medium text-red-400">NUESTRO STACK</p>
+              <h2 className="text-2xl font-semibold sm:text-3xl">Herramientas utilizadas</h2>
+              <p className="mt-4 text-sm leading-6 text-white/70 sm:text-base">
+                Trabajamos con herramientas de la industria para entregar resultados profesionales y fáciles de mantener.
+              </p>
+            </motion.div>
+            <motion.div variants={stagger} className="grid gap-3 md:grid-cols-2">
+              {tools.map((tool, index) => (
+                <motion.div key={tool.title} variants={reveal}>
+                  <ExpandableCard {...tool} open={index === 0} />
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-5 py-20 text-center sm:px-8 lg:py-28">
+        <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
+          <motion.p variants={reveal} className="mb-3 text-sm font-medium text-red-400">
+            EL PRÓXIMO PASO
+          </motion.p>
+          <motion.h2 variants={reveal} className="text-2xl font-semibold sm:text-3xl">
+            Nuestra forma de trabajo
+          </motion.h2>
+          <motion.p variants={reveal} className="mt-5 text-sm leading-7 text-white/70 sm:text-base">
+            Revisá nuestros planes y sus páginas de ejemplo para conocer lo que podemos construir juntos. Pedí tu presupuesto sin costo alguno.
+          </motion.p>
+          <motion.div variants={reveal} className="mt-10">
+            <Link
+              to="/Presupuesto"
+              className="inline-flex items-center gap-2 border border-white/40 px-5 py-3 text-sm font-medium transition-colors hover:border-red-500 hover:bg-red-600"
+            >
+              Ver planes
+              <span aria-hidden="true">→</span>
+            </Link>
+          </motion.div>
+        </motion.div>
+      </section>
+    </main>
   );
 }
