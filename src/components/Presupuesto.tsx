@@ -165,7 +165,7 @@ export default function Hero() {
                   <div className="absolute w-25 h-25 bg-white/30 blur-2xl rounded-full lg:w-30 lg:h-40" />
                     <img
                     src="https://img.icons8.com/?size=100&id=114490&format=png&color=ffffff"
-                    className="w-25 h-20 lg:w-30 lg:h-30"
+                    className="w-20 h-20 lg:w-30 lg:h-30"
                     />
                   </div>
                 </motion.div>
@@ -173,7 +173,7 @@ export default function Hero() {
                   <h1 className="hidden text-3xl font-bold ml-3 lg:text-5xl">JLan</h1>
                 </motion.div>
                 <motion.div className="pb-10" variants={item} >
-                  <motion.p className="mt-10 text-md text-center lg:text-xl lg:mt-25" variants={item}>Pide tu presupuesto sin compromiso y entérate de la página que podría tener tu negocio.</motion.p>
+                  <motion.p className="mt-15 mx-10 text-md text-center lg:text-xl lg:mt-25" variants={item}>Pide tu presupuesto sin compromiso y entérate de la página que podría tener tu negocio.</motion.p>
                 </motion.div>
                 <motion.div className="flex justify-center mt-5" variants={item} >
                   <Link to="/agenda">
@@ -225,15 +225,15 @@ export default function Hero() {
                   bg-zinc-900
                 `}
               >
-                <h3 className="text-3xl mt-2 font-semibold text-center">
+                <h3 className="text-xl mt-2 font-semibold text-center">
                   {plan.name}
                 </h3>
 
-                <p className="text-xl font-semibold text-center">
+                <p className="text-md font-semibold text-center">
                   Aprox. {plan.price}
                 </p>
 
-                <p className="mt-10 text-center text-md">
+                <p className="mt-10 text-center text-sm">
                   {plan.description}
                 </p>
 
@@ -265,7 +265,7 @@ export default function Hero() {
                           <span className="hidden absolute -inset-px opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-sm" />
 
                           {/* texto */}
-                          <span className="relative text-sm flex items-center gap-2 py-2 px-3 lg:px-0 lg:py-0">
+                          <span className="relative text-xs flex items-center gap-2 py-2 px-3 lg:px-0 lg:py-0">
                             Ver ejemplo
 
                             {/* flecha */}

@@ -90,7 +90,7 @@ export default function Navbar() {
             </div>
 
             <span className="font-semibold tracking-wide text-l">
-              JLan Marketing
+              JL Marketing
             </span>
           </Link>
 
