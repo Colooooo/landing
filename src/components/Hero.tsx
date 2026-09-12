@@ -23,7 +23,7 @@ const services = [
     title: "Diseño",
     icon: "https://img.icons8.com/?size=100&id=25991&format=png&color=ffffff",
     description:
-      "Realizamos el diseño de la página a partir de la estética e imagen del negocio, y diseñamos tarjetas personalizadas con código QR para fácil acceso y promoción.",
+      "Realizamos el diseño de la página a partir de la estética e imagen del negocio, y diseñamos tarjetas con código QR para fácil acceso y promoción.",
   },
   {
     title: "Programación",
@@ -35,7 +35,7 @@ const services = [
     title: "Mantenimiento",
     icon: "https://img.icons8.com/?size=100&id=364&format=png&color=ffffff",
     description:
-      "Ofrecemos mantenimiento permanente una vez publicada la página, garantizando su correcto funcionamiento y permitiendo realizar cualquier cambio deseado.",
+      "Ofrecemos mantenimiento permanente una vez publicada la página, garantizando su correcto funcionamiento y permitiendo realizar cambios deseados.",
   },
   {
     title: "Resultados",
@@ -56,19 +56,19 @@ const tools = [
     title: "React",
     icon: "https://img.icons8.com/?size=100&id=58811&format=png&color=ffffff",
     description:
-      "Nos permite construir interfaces ágiles, animaciones fluidas y experiencias rápidas en cada dispositivo.",
+      "Permite construir interfaces y animaciones fluidas, y programar la estética de la página a medida.",
   },
   {
     title: "Supabase",
     icon: supabaselogo,
     description:
-      "Plataforma para almacenar y gestionar datos de forma segura, implementar formularios y agregar funcionalidades escalables.",
+      "Plataforma para almacenar y gestionar datos de forma segura. Usada para que los clientes puedan enviar mensajes o pedidos, gestionar inventarios o turnos, entre otras.",
   },
   {
     title: "Vercel",
     icon: "https://img.icons8.com/?size=100&id=eXVvv0ElyhQy&format=png&color=ffffff",
     description:
-      "Publicamos versiones privadas durante el desarrollo para que puedas supervisar el avance desde cualquier dispositivo.",
+      "Publicamos versiones privadas de la página durante el desarrollo para que puedas supervisar el progreso desde cualquier dispositivo.",
   },
 ];
 
@@ -130,8 +130,7 @@ export default function Hero() {
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
           <motion.div variants={reveal} className="mx-auto mb-10 max-w-2xl text-center">
-            <p className="mb-3 text-sm font-medium text-red-400">LO QUE HACEMOS</p>
-            <h2 className="text-2xl font-semibold sm:text-3xl">Nuestros servicios</h2>
+            <h2 className="mb-3 text-sm font-medium text-red-400">NUESTROS SERVICIOS</h2>
             <p className="mt-4 text-sm leading-6 text-white/70 sm:text-base">
               Desarrollamos páginas web para negocios acorde a sus necesidades. Cualquier idea es realizable.
             </p>
@@ -150,8 +149,7 @@ export default function Hero() {
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.15 }} variants={stagger}>
             <motion.div variants={reveal} className="mx-auto mb-10 max-w-2xl text-center">
-              <p className="mb-3 text-sm font-medium text-red-400">NUESTRO STACK</p>
-              <h2 className="text-2xl font-semibold sm:text-3xl">Herramientas utilizadas</h2>
+            <h2 className="mb-3 text-sm font-medium text-red-400">HERRAMIENTAS UTILIZADAS</h2>
               <p className="mt-4 text-sm leading-6 text-white/70 sm:text-base">
                 Trabajamos con herramientas de la industria para entregar resultados profesionales y fáciles de mantener.
               </p>
@@ -169,14 +167,11 @@ export default function Hero() {
 
       <section className="mx-auto max-w-3xl px-5 py-20 text-center sm:px-8 lg:py-28">
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
-          <motion.p variants={reveal} className="mb-3 text-sm font-medium text-red-400">
-            EL PRÓXIMO PASO
-          </motion.p>
           <motion.h2 variants={reveal} className="text-2xl font-semibold sm:text-3xl">
-            Nuestra forma de trabajo
+            ¡Revisa nuestro trabajo!
           </motion.h2>
-          <motion.p variants={reveal} className="mt-5 text-sm leading-7 text-white/70 sm:text-base">
-            Revisá nuestros planes y sus páginas de ejemplo para conocer lo que podemos construir juntos. Pedí tu presupuesto sin costo alguno.
+          <motion.p variants={reveal} className="mt-5 text-sm leading-7 mx-2 text-white/70 sm:text-base">
+            Revisá nuestros planes y páginas de ejemplo para conocer lo que podemos hacer por ti. Pedí tu presupuesto sin costo alguno.
           </motion.p>
           <motion.div variants={reveal} className="mt-10">
             <Link
