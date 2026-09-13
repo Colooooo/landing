@@ -118,10 +118,10 @@ export default function Hero() {
             <div className="absolute inset-0 scale-125 rounded-full bg-white/20 blur-2xl" />
             <img src={logo} alt="JL Marketing" className="relative h-24 w-24 object-contain sm:h-32 sm:w-32" />
           </motion.div>
-          <motion.p variants={reveal} className="max-w-xl text-lg leading-8 text-white/90 sm:text-xl">
+          <motion.p variants={reveal} className="max-w-xl text-sm leading-8 text-white/90 sm:text-xl">
             Impulsá tu negocio. Con nosotros es fácil.
           </motion.p>
-          <motion.div variants={reveal} className="mt-14">
+          <motion.div variants={reveal} className="mt-[50%]">
             <ScrollArrow />
           </motion.div>
         </motion.div>
@@ -130,7 +130,7 @@ export default function Hero() {
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
           <motion.div variants={reveal} className="mx-auto mb-10 max-w-2xl text-center">
-            <h2 className="mb-3 text-sm font-medium text-red-400">NUESTROS SERVICIOS</h2>
+            <h2 className="mb-3 text-sm font-medium">NUESTROS SERVICIOS</h2>
             <p className="mt-4 text-sm leading-6 text-white/70 sm:text-base">
               Desarrollamos páginas web para negocios acorde a sus necesidades. Cualquier idea es realizable.
             </p>
@@ -149,7 +149,7 @@ export default function Hero() {
         <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.15 }} variants={stagger}>
             <motion.div variants={reveal} className="mx-auto mb-10 max-w-2xl text-center">
-            <h2 className="mb-3 text-sm font-medium text-red-400">HERRAMIENTAS UTILIZADAS</h2>
+            <h2 className="mb-3 text-sm font-medium">HERRAMIENTAS UTILIZADAS</h2>
               <p className="mt-4 text-sm leading-6 text-white/70 sm:text-base">
                 Trabajamos con herramientas de la industria para entregar resultados profesionales y fáciles de mantener.
               </p>
@@ -167,11 +167,11 @@ export default function Hero() {
 
       <section className="mx-auto max-w-3xl px-5 py-20 text-center sm:px-8 lg:py-28">
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
-          <motion.h2 variants={reveal} className="text-2xl font-semibold sm:text-3xl">
-            ¡Revisa nuestro trabajo!
+          <motion.h2 variants={reveal} className="text-2xl font-semibold">
+            ¡Revisá nuestro trabajo!
           </motion.h2>
-          <motion.p variants={reveal} className="mt-5 text-sm leading-7 mx-2 text-white/70 sm:text-base">
-            Revisá nuestros planes y páginas de ejemplo para conocer lo que podemos hacer por ti. Pedí tu presupuesto sin costo alguno.
+          <motion.p variants={reveal} className="my-5 text-sm mx-2 text-white/70 sm:text-base">
+            Conoce nuestros planes y páginas de ejemplo para conocer lo que podemos hacer por ti. Pedí tu presupuesto sin costo alguno.
           </motion.p>
           <motion.div variants={reveal} className="mt-10">
             <Link

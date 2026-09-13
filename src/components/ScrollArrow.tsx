@@ -35,7 +35,7 @@ export default function ScrollArrow() {
         >
           <div className="flex flex-col items-center gap-1">
             {/* glow suave */}
-            <div className="absolute w-15 h-15 bg-white/30 blur-xl rounded-full" />
+            <div className="hidden absolute w-15 h-15 bg-white/30 blur-xl rounded-full" />
 
             {/* flecha */}
             <svg
