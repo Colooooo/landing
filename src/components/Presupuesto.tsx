@@ -1,6 +1,5 @@
 import ScrollArrow from "./ScrollArrow";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
-import { Link } from "react-router-dom";
 import cafeauroradesktop from "../assets/cafeauroradesktop.jpg";
 import ferreteria from "../assets/ferreteria.jpg";
 import barberia from "../assets/barberia.jpg";
@@ -38,7 +37,8 @@ const plans = [
   {
     name: "Básico",
     price: "$2500",
-    image: cafeauroradesktop,
+    desktopImage: cafeauroradesktop,
+    mobileImage: cafeauroradesktop,
     description: "Página de una sola sección, con animaciones simples, para visualización de contenido sin funcionalidades.",
     link: "https://cafeaurorauy.netlify.app/",
 
@@ -62,7 +62,8 @@ const plans = [
   {
     name: "Avanzado",
     price: "$4000",
-    image: barberia,
+    desktopImage: barberia,
+    mobileImage: barberia,
     description:
       "Página de varias secciones, con animaciones complejas y funcionalidades simples.",
     link: "https://barberia-ruddy.vercel.app/",
@@ -86,7 +87,8 @@ const plans = [
   {
     name: "Completo",
     price: "$7000",
-    image: ferreteria,
+    desktopImage: ferreteria,
+    mobileImage: ferreteria,
     description:
       "Página con secciones ilimitadas, optimizada con varias herramientas, con animaciones avanzadas y funcionalidades completas como catálogos de compra, registro de órdenes, pagos online, agendas, etc.",
     link: "https://paginas-sepia.vercel.app/",
@@ -105,6 +107,22 @@ const plans = [
     excluded: [],
   },
 ];
+
+function CheckIcon() {
+  return (
+    <svg className="mt-0.5 h-4 w-4 shrink-0 text-red-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+    </svg>
+  );
+}
+
+function MinusIcon() {
+  return (
+    <svg className="mt-0.5 h-4 w-4 shrink-0 text-white/35" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6 12h12" />
+    </svg>
+  );
+}
 
 export default function Hero() {
 
@@ -175,10 +193,6 @@ export default function Hero() {
                 <motion.div className="pb-10" variants={item} >
                   <motion.p className="mt-15 mx-10 text-md text-center lg:text-xl lg:mt-25" variants={item}>Pide tu presupuesto sin compromiso y entérate de la página que podría tener tu negocio.</motion.p>
                 </motion.div>
-                <motion.div className="flex justify-center mt-5" variants={item} >
-                  <Link to="/agenda">
-                  </Link>
-                </motion.div>
                 <motion.div className="flex justify-center mt-10" variants={item}>
                     <ScrollArrow/>
                 </motion.div>
@@ -200,94 +214,133 @@ export default function Hero() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}>
-        <div className="flex">
+        <div className="flex pb-20">
           {plans.map((plan, index) => (
             <div
               key={plan.name}
-              className="flex-[0_0_85%] md:flex-[0_0_55%] px-4"
+              className="flex-[0_0_92%] px-3 md:flex-[0_0_72%] lg:flex-[0_0_54%] xl:flex-[0_0_46%]"
             >
               <motion.div
                 animate={{
-                  scale: selectedIndex === index ? 1 : 0.82,
-                  opacity: selectedIndex === index ? 1 : 0.35,
-                  y: selectedIndex === index ? 0 : 20,
+                  scale: selectedIndex === index ? 1 : 0.9,
+                  opacity: selectedIndex === index ? 1 : 0.38,
+                  y: selectedIndex === index ? 0 : 18,
                 }}
                 transition={{
                   duration: 0.4,
                 }}
                 className={`
-                  rounded-3xl p-3
+                  h-full rounded-lg p-4 sm:p-5
                   ${
                     selectedIndex === index
-                      ? "border-2"
+                      ? "border border-red-500/70 shadow-[0_0_40px_rgba(239,68,68,0.16)]"
                       : "border border-white/10"
                   }
-                  bg-zinc-900
+                  bg-zinc-950/95
                 `}
               >
-                <h3 className="text-xl mt-2 font-semibold text-center">
-                  {plan.name}
-                </h3>
+                <div className="flex flex-col gap-5">
+                  <div className="flex items-start justify-between gap-4 border-b border-white/10 pb-5">
+                    <div className="min-w-0">
+                      <p className="text-xs font-medium uppercase tracking-[0.22em] text-red-300/80">Plan</p>
+                      <h3 className="mt-2 text-2xl font-semibold text-white sm:text-3xl">{plan.name}</h3>
+                    </div>
+                    <div className="shrink-0 text-right">
+                      <p className="text-xs text-white/50">Desde</p>
+                      <p className="text-xl font-semibold text-white sm:text-2xl">{plan.price}</p>
+                    </div>
+                  </div>
 
-                <p className="text-md font-semibold text-center">
-                  Aprox. {plan.price}
-                </p>
+                  <p className="text-sm leading-6 text-white/70">{plan.description}</p>
 
-                <p className="mt-10 text-center text-sm">
-                  {plan.description}
-                </p>
+                  <div className="grid items-end gap-4 lg:grid-cols-[minmax(0,1fr)_150px]">
+                    <div>
+                      <div className="mb-2 flex items-center justify-between text-xs text-white/50">
+                        <span>Captura desktop</span>
+                        <span>16:10</span>
+                      </div>
+                      <div className="overflow-hidden rounded-md border border-white/15 bg-black">
+                        <div className="flex h-6 items-center gap-1.5 border-b border-white/10 bg-white/[0.04] px-3">
+                          <span className="h-2 w-2 rounded-full bg-red-400" />
+                          <span className="h-2 w-2 rounded-full bg-yellow-300" />
+                          <span className="h-2 w-2 rounded-full bg-green-400" />
+                        </div>
+                        <img
+                          src={plan.desktopImage}
+                          alt={`Ejemplo desktop del plan ${plan.name}`}
+                          className="aspect-[16/10] w-full object-cover object-top"
+                        />
+                      </div>
+                    </div>
 
-                <img src={plan.image}
-                     className="h-auto mt-10 border-2 border-black">
-                  
-                </img>
+                    <div className="mx-auto w-32 sm:w-36 lg:w-full">
+                      <div className="mb-2 flex items-center justify-between text-xs text-white/50">
+                        <span>Mobile</span>
+                        <span>9:16</span>
+                      </div>
+                      <div className="overflow-hidden rounded-md border border-white/15 bg-black p-1.5">
+                        <div className="mx-auto mb-1.5 h-1 w-10 rounded-full bg-white/20" />
+                        <img
+                          src={plan.mobileImage}
+                          alt={`Ejemplo mobile del plan ${plan.name}`}
+                          className="aspect-[9/16] w-full rounded-[4px] object-cover object-top"
+                        />
+                      </div>
+                    </div>
+                  </div>
 
-                <div className="grid grid-cols-2 hidden">
-                  <p className="">
-                  {plan.included}
-                  </p>
-                  <p>
-                  {plan.excluded}
-                  </p>
-                </div>
+                  <div className="grid gap-4 border-t border-white/10 pt-5 sm:grid-cols-2">
+                    <div>
+                      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-white/55">Incluye</p>
+                      <ul className="space-y-2 text-sm text-white/75">
+                        {plan.included.map((feature) => (
+                          <li key={feature} className="flex gap-2">
+                            <CheckIcon />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                <div className="mt-3 flex justify-center">
-                  <Link
-                    to={plan.link}
-                    className="bg-black text-white"
-                  >
-                        <button className="group relative border-2 border-white/50 text-white tracking-wide overflow-hidden transition-all duration-300 lg:text-xl lg:py-3 lg:px-15">
+                    <div>
+                      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-white/55">No incluye</p>
+                      {plan.excluded.length > 0 ? (
+                        <ul className="space-y-2 text-sm text-white/45">
+                          {plan.excluded.map((feature) => (
+                            <li key={feature} className="flex gap-2">
+                              <MinusIcon />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="text-sm leading-6 text-white/60">Pensado para cubrir el proyecto completo según alcance acordado.</p>
+                      )}
+                    </div>
+                  </div>
 
-                          {/* fondo animado sutil */}
-                          <span className="absolute inset-0 bg-white/5 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
-
-                          {/* glow lateral */}
-                          <span className="hidden absolute -inset-px opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-sm" />
-
-                          {/* texto */}
-                          <span className="relative text-xs flex items-center gap-2 py-2 px-3 lg:px-0 lg:py-0">
-                            Ver ejemplo
-
-                            {/* flecha */}
-                            <svg
-                              className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M5 12h14m0 0l-4-4m4 4l-4 4"
-                              />
-                            </svg>
-                          </span>
-
-                          {/* borde glow fino */}
-                          <span className="hidden absolute inset-0 border border-white/10 group-hover:border-white/30 transition" />
-                        </button>
-                  </Link>
+                  <div className="flex justify-center pt-2">
+                    <a
+                      href={plan.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group relative inline-flex overflow-hidden border border-white/40 text-white transition-colors duration-300 hover:border-red-400 hover:bg-red-600"
+                    >
+                      <span className="absolute inset-0 origin-left scale-x-0 bg-white/10 transition-transform duration-300 group-hover:scale-x-100" />
+                      <span className="relative flex items-center gap-2 px-5 py-3 text-sm font-medium">
+                        Ver ejemplo
+                        <svg
+                          className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m0 0l-4-4m4 4l-4 4" />
+                        </svg>
+                      </span>
+                    </a>
+                  </div>
                 </div>
               </motion.div>
             </div>
