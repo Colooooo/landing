@@ -114,7 +114,7 @@ export default function Hero() {
           variants={stagger}
           className="mx-auto flex min-h-[calc(100svh-72px)] max-w-3xl flex-col items-center justify-center px-6 pb-16 text-center"
         >
-          <motion.div variants={reveal} className="relative mb-12">
+          <motion.div variants={reveal} className="relative mb-12 mt-[33%]">
             <div className="absolute inset-0 scale-125 rounded-full bg-white/20 blur-2xl" />
             <img src={logo} alt="JL Marketing" className="relative h-24 w-24 object-contain sm:h-32 sm:w-32" />
           </motion.div>
@@ -171,7 +171,7 @@ export default function Hero() {
             ¡Revisá nuestro trabajo!
           </motion.h2>
           <motion.p variants={reveal} className="my-5 text-sm mx-2 text-white/70 sm:text-base">
-            Conoce nuestros planes y páginas de ejemplo para conocer lo que podemos hacer por ti. Pedí tu presupuesto sin costo alguno.
+            Revisá nuestros planes y páginas de ejemplo para conocer lo que podemos hacer por ti. Pedí tu presupuesto sin costo alguno.
           </motion.p>
           <motion.div variants={reveal} className="mt-10">
             <Link
