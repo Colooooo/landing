@@ -179,7 +179,7 @@ export default function Hero() {
                       },
                     }}
                     className="relative z-10">
-                  <div className="flex flex-col items-center mt-35">
+                  <div className="flex flex-col items-center mt-[33%]">
                   <div className="absolute w-25 h-25 bg-white/30 blur-2xl rounded-full lg:w-30 lg:h-40" />
                     <img
                     src="https://img.icons8.com/?size=100&id=114490&format=png&color=ffffff"
@@ -191,9 +191,9 @@ export default function Hero() {
                   <h1 className="hidden text-3xl font-bold ml-3 lg:text-5xl">JLan</h1>
                 </motion.div>
                 <motion.div className="pb-10" variants={item} >
-                  <motion.p className="mt-15 mx-10 text-md text-center lg:text-xl lg:mt-25" variants={item}>Pide tu presupuesto sin compromiso y entérate de la página que podría tener tu negocio.</motion.p>
+                  <motion.p className="mt-15 mx-10 text-sm text-center lg:text-xl lg:mt-25" variants={item}>Pide tu presupuesto sin compromiso y entérate de la página que podría tener tu negocio.</motion.p>
                 </motion.div>
-                <motion.div className="flex justify-center mt-10" variants={item}>
+                <motion.div className="flex justify-center mt-[50%]" variants={item}>
                     <ScrollArrow/>
                 </motion.div>
             </motion.div>
