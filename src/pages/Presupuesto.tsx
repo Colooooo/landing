@@ -22,7 +22,7 @@ const plans = [
   {
     name: "Completo", price: "$7000", label: "Página completa", image: ferreteria,
     description: "Una web con herramientas para vender, recibir reservas y gestionar tu negocio.",
-    link: "https://paginas-sepia.vercel.app/",
+    link: "https://ferreteria-9kgk4zxjm-colooooos-projects.vercel.app/",
     included: ["Secciones ilimitadas", "Animaciones premium", "Catálogo de productos", "Pagos online", "Agenda de reservas", "Panel administrativo", "Integraciones avanzadas", "SEO avanzado"],
     excluded: [],
   },
