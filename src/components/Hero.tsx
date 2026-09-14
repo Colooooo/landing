@@ -9,13 +9,13 @@ const reveal: Variants = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 0.7, ease: "easeOut" },
   },
 };
 
 const stagger: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12 } },
+  show: { transition: { staggerChildren: 0.42 } },
 };
 
 const services = [
@@ -157,7 +157,7 @@ export default function Hero() {
           <motion.p variants={reveal} className="max-w-xl text-sm leading-8 text-white/90 sm:text-xl">
             Impulsá tu negocio. Con nosotros es fácil.
           </motion.p>
-          <motion.div variants={reveal} className="mt-[50%]">
+          <motion.div variants={reveal} className="mt-[30%]">
             <ScrollArrow />
           </motion.div>
         </motion.div>
@@ -166,7 +166,7 @@ export default function Hero() {
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
           <motion.div variants={reveal} className="mx-auto mb-10 max-w-2xl text-center">
-            <h2 className="mb-3 text-sm font-medium">NUESTROS SERVICIOS</h2>
+            <h2 className="mb-3 text-sm font-medium">LO QUE OFRECEMOS</h2>
             <p className="mt-4 text-sm leading-6 text-white/70 sm:text-base">
               Desarrollamos páginas web para negocios acorde a sus necesidades. Cualquier idea es realizable.
             </p>
