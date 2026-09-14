@@ -104,6 +104,42 @@ function ExpandableCard({ title, icon, description, open = false }: ExpandableCa
   );
 }
 
+// Desktop layout recovered from the original animated columns.
+function DesktopColumns({ items }: { items: Omit<ExpandableCardProps, "open">[] }) {
+  return (
+    <motion.dl
+      className="hidden grid-cols-4 gap-8 lg:grid"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.5 } } }}
+    >
+      {items.map(({ title, icon, description }) => (
+        <motion.div
+          key={title}
+          className="min-w-0 text-center"
+          variants={{
+            hidden: { opacity: 0, y: 100 },
+            show: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.8, ease: "easeInOut" },
+            },
+          }}
+        >
+          <dt className="my-4 flex flex-col items-center gap-2 font-semibold">
+            <img src={icon} alt="" className="h-10 w-10 object-contain" />
+            {title}
+          </dt>
+          <dd className="mx-auto max-w-64 text-sm leading-6 text-white/70">
+            {description}
+          </dd>
+        </motion.div>
+      ))}
+    </motion.dl>
+  );
+}
+
 export default function Hero() {
   return (
     <main className="overflow-x-clip bg-black text-white">
@@ -135,13 +171,14 @@ export default function Hero() {
               Desarrollamos páginas web para negocios acorde a sus necesidades. Cualquier idea es realizable.
             </p>
           </motion.div>
-          <motion.div variants={stagger} className="grid gap-3 md:grid-cols-2">
+          <motion.div variants={stagger} className="grid gap-3 md:grid-cols-2 lg:hidden">
             {services.map((service, index) => (
               <motion.div key={service.title} variants={reveal}>
                 <ExpandableCard {...service} open={index === 0} />
               </motion.div>
             ))}
           </motion.div>
+          <DesktopColumns items={services} />
         </motion.div>
       </section>
 
@@ -154,13 +191,14 @@ export default function Hero() {
                 Trabajamos con herramientas de la industria para entregar resultados profesionales y fáciles de mantener.
               </p>
             </motion.div>
-            <motion.div variants={stagger} className="grid gap-3 md:grid-cols-2">
+            <motion.div variants={stagger} className="grid gap-3 md:grid-cols-2 lg:hidden">
               {tools.map((tool, index) => (
                 <motion.div key={tool.title} variants={reveal}>
                   <ExpandableCard {...tool} open={index === 0} />
                 </motion.div>
               ))}
             </motion.div>
+            <DesktopColumns items={tools} />
           </motion.div>
         </div>
       </section>
