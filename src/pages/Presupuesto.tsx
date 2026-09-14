@@ -8,7 +8,7 @@ const plans = [
   {
     name: "Básico", price: "$2500", label: "Página de presentación", image: cafe,
     description: "Una página simple para presentar tu negocio, casi sin funcionalidades.",
-    link: "https://cafeaurorauy.netlify.app/",
+    link: "https://cafeteria-sage-three.vercel.app/",
     included: ["1 sección principal", "Diseño responsive", "Formulario de contacto", "Animaciones básicas", "Optimización SEO básica"],
     excluded: ["Catálogo de productos", "Pagos online", "Agenda de reservas", "Panel administrativo", "Integraciones avanzadas"],
   },
