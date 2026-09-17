@@ -46,20 +46,27 @@ export default function Presupuesto() {
     <main className="relative isolate overflow-x-clip bg-black text-white [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-4 [&_button:focus-visible]:outline-2 [&_button:focus-visible]:outline-offset-4 [&_summary:focus-visible]:outline-2 [&_summary:focus-visible]:outline-offset-4">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.85)_50%,#000_100%),url('https://images.unsplash.com/photo-1652717249447-293e8205c000?q=80&w=3000&auto=format&fit=cover')] bg-cover bg-top" />
 
-      <section className="flex min-h-svh flex-col pt-18" aria-labelledby="budget-title">
-        <motion.div initial="hidden" animate="show" variants={stagger} className="mx-auto flex min-h-[calc(100svh-72px)] w-full max-w-3xl flex-1 flex-col items-center justify-center px-6 pt-10 text-center">
-          <motion.div variants={reveal} className="relative mb-12">
+      <section className="min-h-[calc(100svh-72px)] bg-[linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,1)),url('https://images.unsplash.com/photo-1652717249447-293e8205c000?q=80&w=3000&auto=format&fit=cover')] bg-cover bg-center pt-18">
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={stagger}
+          className="mx-auto flex min-h-[calc(100svh-72px)] max-w-3xl flex-col items-center justify-center px-6 pb-16 text-center"
+        >
+          <motion.div variants={reveal} className="relative mb-12 mt-[33%]">
             <div className="absolute inset-0 scale-125 rounded-full bg-white/20 blur-2xl" />
-            <img src={logo} alt="JL Marketing" className="relative h-24 w-24 object-contain sm:h-32 sm:w-32" />
+            <img src={logo} alt="JL Marketing" className="relative h-30 w-30 object-contain md:h-44 md:w-44" />
           </motion.div>
-          <motion.h1 id="budget-title" variants={reveal} className="max-w-xl text-sm leading-8 text-white/90 md:text-xl">
-            Pedí tu presupuesto sin costo alguno y descubrí la página que podría tener tu negocio.
-          </motion.h1>
-          <motion.div variants={reveal} className="mt-[33%] lg:h-36">
-           <ScrollArrow />
+          <motion.p variants={reveal} className="max-w-xl text-sm leading-8 text-white/90 sm:text-xl">
+            Ve nuestras páginas de ejemplo y pide tu presupuesto sin costo alguno.
+          </motion.p>
+          <motion.div variants={reveal} className="mt-[30%] md:mt-[25%]">
+            <ScrollArrow />
           </motion.div>
         </motion.div>
       </section>
+
+      
 
       <section id="planes" aria-labelledby="plans-title" className="mx-auto flex min-h-svh max-w-screen-2xl flex-col justify-center gap-4 px-4 pb-6 md:gap-5 md:px-[clamp(24px,4vw,64px)] [@media(max-height:740px)]:gap-2 [@media(max-height:740px)]:pb-2 [@media(max-height:740px)]:pt-20">
         <header className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between md:gap-8">

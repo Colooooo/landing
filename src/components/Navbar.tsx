@@ -79,17 +79,17 @@ export default function Navbar() {
           {/* LOGO */}
           <Link
             to="/"
-            className="flex items-center gap-2 hover:scale-103 transition"
+            className="flex items-center gap-1 hover:scale-103 transition"
           >
             <div className="relative">
               <img
                 src={logo}
-                className="h-8 ml-5"
+                className="h-10 ml-5"
                 alt="JLan"
               />
             </div>
 
-            <span className="font-semibold align-bottom text-sm">
+            <span className="font-semibold align-bottom text-sm mt-3">
               Marketing
             </span>
           </Link>
