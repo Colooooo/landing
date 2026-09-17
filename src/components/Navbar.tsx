@@ -79,7 +79,7 @@ export default function Navbar() {
           {/* LOGO */}
           <Link
             to="/"
-            className="flex items-center gap-3 hover:scale-x-103 transition"
+            className="flex items-center gap-2 hover:scale-103 transition"
           >
             <div className="relative">
               <img
@@ -89,8 +89,8 @@ export default function Navbar() {
               />
             </div>
 
-            <span className="font-semibold tracking-wide text-l">
-              JL Marketing
+            <span className="font-semibold align-bottom text-sm">
+              Marketing
             </span>
           </Link>
 
@@ -275,23 +275,6 @@ export default function Navbar() {
                     </Link>
                   </motion.div>
                 ))}
-
-                <Link to="/admin">
-                  <button
-                    className="
-                      w-full
-                      mt-2
-                      py-4
-                      rounded-xl
-                      bg-red-700
-                      hover:bg-red-600
-                      transition
-                      font-medium
-                    "
-                  >
-                    Pedir presupuesto
-                  </button>
-                </Link>
 
               </div>
             </motion.div>

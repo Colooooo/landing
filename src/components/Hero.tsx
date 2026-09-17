@@ -83,7 +83,7 @@ function ExpandableCard({ title, icon, description, open = false }: ExpandableCa
   return (
     <details
       open={open}
-      className="group overflow-hidden border border-white/10 bg-white/[0.035] transition-colors open:border-red-500/60 open:bg-white/[0.06]"
+      className="group overflow-hidden border border-white/10 bg-white/[0.035] transition-colors open:border-zinc-500/80 open:bg-white/[0.06]"
     >
       <summary className="flex cursor-pointer list-none items-center gap-4 px-5 py-4 marker:content-none [&::-webkit-details-marker]:hidden">
         <span className="flex h-11 w-11 shrink-0 items-center justify-center border border-white/10 bg-black/30">
@@ -152,12 +152,12 @@ export default function Hero() {
         >
           <motion.div variants={reveal} className="relative mb-12 mt-[33%]">
             <div className="absolute inset-0 scale-125 rounded-full bg-white/20 blur-2xl" />
-            <img src={logo} alt="JL Marketing" className="relative h-24 w-24 object-contain sm:h-32 sm:w-32" />
+            <img src={logo} alt="JL Marketing" className="relative h-30 w-30 object-contain md:h-44 md:w-44" />
           </motion.div>
           <motion.p variants={reveal} className="max-w-xl text-sm leading-8 text-white/90 sm:text-xl">
             Impulsá tu negocio. Con nosotros es fácil.
           </motion.p>
-          <motion.div variants={reveal} className="mt-[30%]">
+          <motion.div variants={reveal} className="mt-[30%] md:mt-[25%]">
             <ScrollArrow />
           </motion.div>
         </motion.div>
@@ -168,7 +168,7 @@ export default function Hero() {
           <motion.div variants={reveal} className="mx-auto mb-10 max-w-2xl text-center">
             <h2 className="mb-3 text-sm font-medium">LO QUE OFRECEMOS</h2>
             <p className="mt-4 text-sm leading-6 text-white/70 sm:text-base">
-              Desarrollamos páginas web para negocios acorde a sus necesidades. Cualquier idea es realizable.
+              Desarrollamos páginas web para negocios, acorde a cualquier necesidad. Toda idea es realizable.
             </p>
           </motion.div>
           <motion.div variants={stagger} className="grid gap-3 md:grid-cols-2 lg:hidden">

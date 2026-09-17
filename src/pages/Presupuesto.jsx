@@ -47,21 +47,21 @@ export default function Presupuesto() {
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.85)_50%,#000_100%),url('https://images.unsplash.com/photo-1652717249447-293e8205c000?q=80&w=3000&auto=format&fit=cover')] bg-cover bg-top" />
 
       <section className="flex min-h-svh flex-col pt-18" aria-labelledby="budget-title">
-        <motion.div initial="hidden" animate="show" variants={stagger} className="mx-auto flex min-h-[calc(100svh-72px)] w-full max-w-3xl flex-1 flex-col items-center justify-center px-6 pb-20 pt-10 text-center">
+        <motion.div initial="hidden" animate="show" variants={stagger} className="mx-auto flex min-h-[calc(100svh-72px)] w-full max-w-3xl flex-1 flex-col items-center justify-center px-6 pt-10 text-center">
           <motion.div variants={reveal} className="relative mb-12">
             <div className="absolute inset-0 scale-125 rounded-full bg-white/20 blur-2xl" />
             <img src={logo} alt="JL Marketing" className="relative h-24 w-24 object-contain sm:h-32 sm:w-32" />
           </motion.div>
-          <motion.h1 id="budget-title" variants={reveal} className="max-w-xl text-sm font-normal leading-8 text-white/90 sm:text-xl">
+          <motion.h1 id="budget-title" variants={reveal} className="max-w-xl text-sm leading-8 text-white/90 md:text-xl">
             Pedí tu presupuesto sin costo alguno y descubrí la página que podría tener tu negocio.
           </motion.h1>
-          <motion.div variants={reveal} className="mt-[clamp(32px,10svh,100px)] h-20 lg:h-36">
-            <a href="#planes" aria-label="Ver los planes" className="block min-h-11 min-w-11"><ScrollArrow /></a>
+          <motion.div variants={reveal} className="mt-[33%] lg:h-36">
+           <ScrollArrow />
           </motion.div>
         </motion.div>
       </section>
 
-      <section id="planes" aria-labelledby="plans-title" className="mx-auto flex min-h-svh max-w-screen-2xl flex-col justify-center gap-4 px-4 pb-6 pt-22 md:gap-5 md:px-[clamp(24px,4vw,64px)] [@media(max-height:740px)]:gap-2 [@media(max-height:740px)]:pb-2 [@media(max-height:740px)]:pt-20">
+      <section id="planes" aria-labelledby="plans-title" className="mx-auto flex min-h-svh max-w-screen-2xl flex-col justify-center gap-4 px-4 pb-6 md:gap-5 md:px-[clamp(24px,4vw,64px)] [@media(max-height:740px)]:gap-2 [@media(max-height:740px)]:pb-2 [@media(max-height:740px)]:pt-20">
         <header className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between md:gap-8">
           <div>
             <span className="text-[10px] font-medium tracking-[0.19em] text-white/60">NUESTROS PLANES</span>
@@ -100,7 +100,6 @@ export default function Presupuesto() {
                   <p className="my-2">{plan.excluded.join(" · ")}</p>
                 </details>
               ) : <p className="mt-auto py-2 text-[11px] leading-relaxed text-white/55">Funcionalidades según el alcance acordado.</p>}
-              <a className="flex min-h-11 items-center justify-between gap-2 rounded-md border border-white/25 px-3 py-2.5 text-xs transition-colors hover:border-white/50 hover:bg-white/10 motion-reduce:transition-none" href={plan.link} target="_blank" rel="noreferrer">Ver ejemplo {plan.name.toLowerCase()} <span aria-hidden="true">↗</span></a>
             </article>
           ))}
         </div>
