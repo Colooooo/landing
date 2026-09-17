@@ -17,21 +17,21 @@ const stagger = {
 
 const plans = [
   {
-    name: "Básico", price: "$2500", label: "Página de presentación", image: cafe,
+    name: "Básico", price: "$3000", label: "Página de presentación", image: cafe,
     description: "Una página simple para presentar tu negocio, casi sin funcionalidades.",
     link: "https://cafeteria-sage-three.vercel.app/",
     included: ["1 sección principal", "Diseño responsive", "Formulario de contacto", "Animaciones básicas", "Optimización SEO básica"],
     excluded: ["Catálogo de productos", "Pagos online", "Agenda de reservas", "Panel administrativo", "Integraciones avanzadas"],
   },
   {
-    name: "Avanzado", price: "$4000", label: "Página avanzada", image: barberia,
-    description: "Más secciones, movimiento e integraciones para una presencia digital más completa.",
+    name: "Avanzado", price: "$5000", label: "Página avanzada", image: barberia,
+    description: "Más secciones, movimiento e integraciones.",
     link: "https://barberia-ruddy.vercel.app/",
     included: ["Múltiples secciones", "Diseño responsive", "Animaciones avanzadas", "Formulario de contacto", "SEO optimizado", "Integraciones básicas"],
     excluded: ["Pagos online", "Agenda de reservas", "Panel administrativo"],
   },
   {
-    name: "Completo", price: "$7000", label: "Página completa", image: ferreteria,
+    name: "Completo", price: "$9000", label: "Página completa", image: ferreteria,
     description: "Una web con herramientas para vender, recibir reservas y gestionar tu negocio.",
     link: "https://ferreteria-9kgk4zxjm-colooooos-projects.vercel.app/",
     included: ["Secciones ilimitadas", "Animaciones premium", "Catálogo de productos", "Pagos online", "Agenda de reservas", "Panel administrativo", "Integraciones avanzadas", "SEO avanzado"],
@@ -67,7 +67,7 @@ export default function Presupuesto() {
             <span className="text-[10px] font-medium tracking-[0.19em] text-white/60">NUESTROS PLANES</span>
             <h2 id="plans-title" className="mt-1 md:mt-2 text-[clamp(26px,3vw,42px)] font-medium leading-tight tracking-[-0.045em]">Elegí cómo empezar</h2>
           </div>
-          <p className="max-w-md text-xs leading-relaxed text-white/60 md:text-sm">Ve y experimenta lo que ofrecemos con estas páginas de ejemplo. El presupuesto final se ajusta a tu negocio.</p>
+          <p className="max-w-md text-xs leading-relaxed text-white/60 md:text-sm">Ve y experimenta lo que ofrecemos con estas páginas de ejemplo. Nuestro presupuesto final se ajusta a tu negocio.</p>
         </header>
 
         <div className="grid grid-cols-3 gap-1 rounded-lg border border-white/15 bg-white/5 p-1 md:hidden" aria-label="Elegir plan">
