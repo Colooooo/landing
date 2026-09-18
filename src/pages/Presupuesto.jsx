@@ -24,15 +24,15 @@ const plans = [
     cardImage: tarjetaCafe,
     description: "Una página simple para presentar tu negocio, casi sin funcionalidades.",
     link: "https://cafeteria-sage-three.vercel.app/",
-    included: ["1 sección principal", "Diseño responsive", "Formulario de contacto", "Animaciones básicas", "Optimización SEO básica"],
+    included: ["1 sección principal", "Diseño responsive", "Formulario de contacto", "Animaciones básicas"],
     excluded: ["Catálogo de productos", "Pagos online", "Agenda de reservas", "Panel administrativo", "Integraciones avanzadas"],
   },
   {
     name: "Avanzado", price: "$5000", label: "Página avanzada", image: barberia,
     cardImage: tarjetaBarberia,
-    description: "Más secciones, movimiento e integraciones.",
+    description: "Más secciones, movimiento e integraciones, con funcionalidades avanzadas.",
     link: "https://barberia-ruddy.vercel.app/",
-    included: ["Múltiples secciones", "Diseño responsive", "Animaciones avanzadas", "Formulario de contacto", "SEO optimizado", "Integraciones básicas"],
+    included: ["Múltiples secciones", "Diseño responsive", "Animaciones avanzadas", "Formulario de contacto", "Integraciones básicas"],
     excluded: ["Pagos online", "Agenda de reservas", "Panel administrativo"],
   },
   {
@@ -40,7 +40,7 @@ const plans = [
     cardImage: tarjetaFerreteria,
     description: "Una web con herramientas para vender, recibir reservas y gestionar tu negocio.",
     link: "https://ferreteria-9kgk4zxjm-colooooos-projects.vercel.app/",
-    included: ["Secciones ilimitadas", "Animaciones premium", "Catálogo de productos", "Pagos online", "Agenda de reservas", "Panel administrativo", "Integraciones avanzadas", "SEO avanzado"],
+    included: ["Secciones ilimitadas", "Animaciones premium", "Catálogo de productos", "Pagos online", "Agenda de reservas", "Panel administrativo"],
     excluded: [],
   },
 ];

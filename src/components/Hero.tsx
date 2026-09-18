@@ -209,7 +209,7 @@ export default function Hero() {
             ¡Revisá nuestro trabajo!
           </motion.h2>
           <motion.p variants={reveal} className="my-5 text-sm mx-2 text-white/70 sm:text-base">
-            Revisá nuestros planes y páginas de ejemplo para conocer lo que podemos hacer por ti. Pedí tu presupuesto sin costo alguno.
+            Conocé nuestras páginas de ejemplo para conocer lo que podemos hacer por ti. Pedí tu presupuesto sin costo alguno.
           </motion.p>
           <motion.div variants={reveal} className="mt-10">
             <Link
