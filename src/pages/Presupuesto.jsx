@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import cafe from "../assets/cafeauroradesktop.jpg";
 import barberia from "../assets/barberia.jpg";
 import ferreteria from "../assets/ferreteria.jpg";
-import logo from "../assets/logoblanco.png";
+import logo from "../assets/presupuesto.svg";
 import ScrollArrow from "../components/ScrollArrow";
 
 const reveal = {
@@ -55,7 +55,8 @@ export default function Presupuesto() {
         >
           <motion.div variants={reveal} className="relative mb-12 mt-[33%]">
             <div className="absolute inset-0 scale-125 rounded-full bg-white/20 blur-2xl" />
-            <img src={logo} alt="JL Marketing" className="relative h-30 w-30 object-contain md:h-44 md:w-44" />
+            <img src={logo} alt="JL Marketing" className="relative h-20 w-20 object-contain md:h-32 md:w-32" />
+            
           </motion.div>
           <motion.p variants={reveal} className="max-w-xl text-sm leading-8 text-white/90 sm:text-xl">
             Ve nuestras páginas de ejemplo y pide tu presupuesto sin costo alguno.

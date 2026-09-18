@@ -104,11 +104,10 @@ function ExpandableCard({ title, icon, description, open = false }: ExpandableCa
   );
 }
 
-// Desktop layout recovered from the original animated columns.
 function DesktopColumns({ items }: { items: Omit<ExpandableCardProps, "open">[] }) {
   return (
     <motion.dl
-      className="hidden grid-cols-4 gap-8 lg:grid"
+      className="hidden grid-cols-4 gap-8 lg:grid [&>div:nth-child(2)]:mt-12 [&>div:nth-child(3)]:mt-12"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}

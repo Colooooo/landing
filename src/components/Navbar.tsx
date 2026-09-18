@@ -83,7 +83,7 @@ export default function Navbar() {
             <div className="relative">
               <img
                 src={logo}
-                className="h-10 ml-5"
+                className="h-8 ml-5"
                 alt="JLan"
               />
             </div>
