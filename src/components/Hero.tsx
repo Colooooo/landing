@@ -150,7 +150,8 @@ export default function Hero() {
           variants={stagger}
           className="mx-auto flex min-h-[calc(100svh-72px)] max-w-3xl flex-col items-center justify-center px-6 pb-16 text-center"
         >
-          <motion.div variants={reveal} className="relative mb-12 mt-[33%]">
+          <motion.div 
+          variants={reveal} className="relative mb-12 mt-[33%]">
             <div className="absolute inset-0 scale-125 rounded-full bg-white/20 blur-2xl" />
             <img src={logo} alt="JL Marketing" className="relative h-30 w-30 object-contain md:h-44 md:w-44" />
           </motion.div>

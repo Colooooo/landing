@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "../assets/logoblanco.png";
+import logo from "../assets/logotexto.png";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -76,7 +76,6 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-18">
 
-          {/* LOGO */}
           <Link
             to="/"
             className="flex items-center gap-1 hover:scale-103 transition"
@@ -88,13 +87,8 @@ export default function Navbar() {
                 alt="JLan"
               />
             </div>
-
-            <span className="font-semibold align-bottom text-sm mt-3">
-              Marketing
-            </span>
           </Link>
 
-          {/* DESKTOP */}
           <div className="hidden md:flex items-center gap-8">
 
             {links.map((link) => (
