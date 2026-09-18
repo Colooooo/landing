@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import cafe from "../assets/cafeauroradesktop.jpg";
 import barberia from "../assets/barberia.jpg";
 import ferreteria from "../assets/ferreteria.jpg";
+import tarjetaCafe from "../assets/tarjetas/cafe-aurora.webp";
+import tarjetaBarberia from "../assets/tarjetas/king-barber-v2.webp";
+import tarjetaFerreteria from "../assets/tarjetas/el-galpon-v2.webp";
 import logo from "../assets/presupuesto.svg";
 import ScrollArrow from "../components/ScrollArrow";
 
@@ -18,6 +21,7 @@ const stagger = {
 const plans = [
   {
     name: "Básico", price: "$3000", label: "Página de presentación", image: cafe,
+    cardImage: tarjetaCafe,
     description: "Una página simple para presentar tu negocio, casi sin funcionalidades.",
     link: "https://cafeteria-sage-three.vercel.app/",
     included: ["1 sección principal", "Diseño responsive", "Formulario de contacto", "Animaciones básicas", "Optimización SEO básica"],
@@ -25,6 +29,7 @@ const plans = [
   },
   {
     name: "Avanzado", price: "$5000", label: "Página avanzada", image: barberia,
+    cardImage: tarjetaBarberia,
     description: "Más secciones, movimiento e integraciones.",
     link: "https://barberia-ruddy.vercel.app/",
     included: ["Múltiples secciones", "Diseño responsive", "Animaciones avanzadas", "Formulario de contacto", "SEO optimizado", "Integraciones básicas"],
@@ -32,6 +37,7 @@ const plans = [
   },
   {
     name: "Completo", price: "$9000", label: "Página completa", image: ferreteria,
+    cardImage: tarjetaFerreteria,
     description: "Una web con herramientas para vender, recibir reservas y gestionar tu negocio.",
     link: "https://ferreteria-9kgk4zxjm-colooooos-projects.vercel.app/",
     included: ["Secciones ilimitadas", "Animaciones premium", "Catálogo de productos", "Pagos online", "Agenda de reservas", "Panel administrativo", "Integraciones avanzadas", "SEO avanzado"],
@@ -41,6 +47,22 @@ const plans = [
 
 export default function Presupuesto() {
   const [selected, setSelected] = useState(1);
+  const [expandedCard, setExpandedCard] = useState(null);
+  const cardDialog = useRef(null);
+
+  useEffect(() => {
+    if (!expandedCard) return;
+
+    const dialog = cardDialog.current;
+    const previousOverflow = document.body.style.overflow;
+    dialog.showModal();
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      dialog.close();
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [expandedCard]);
 
   return (
     <main className="relative isolate overflow-x-clip bg-black text-white [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-4 [&_button:focus-visible]:outline-2 [&_button:focus-visible]:outline-offset-4 [&_summary:focus-visible]:outline-2 [&_summary:focus-visible]:outline-offset-4">
@@ -55,7 +77,7 @@ export default function Presupuesto() {
         >
           <motion.div variants={reveal} className="relative mb-12 mt-[33%]">
             <div className="absolute inset-0 scale-125 rounded-full bg-white/20 blur-2xl" />
-            <img src={logo} alt="JL Marketing" className="relative h-20 w-20 object-contain md:h-32 md:w-32" />
+            <img src={logo} alt="JL Marketing" className="relative h-20 w-20 object-contain md:h-25 md:w-25" />
             
           </motion.div>
           <motion.p variants={reveal} className="max-w-xl text-sm leading-8 text-white/90 sm:text-xl">
@@ -99,6 +121,29 @@ export default function Presupuesto() {
                 <img src={plan.image} alt={`Vista del sitio de ejemplo del plan ${plan.name}`} loading="lazy" className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105 motion-reduce:transition-none" />
                 <span className="absolute inset-x-0 bottom-0 flex justify-between bg-gradient-to-t from-black/95 to-transparent px-3 pb-2 pt-5 text-[11px]">Explorá un ejemplo <span aria-hidden="true">↗</span></span>
               </a>
+              <figure className="my-1">
+                <figcaption className="mb-2 flex items-center justify-between gap-2 text-[11px] text-white/60">
+                  <span>Tarjeta de presentación</span>
+                  <span className="shrink-0 text-white/40">9 × 5 cm</span>
+                </figcaption>
+                <div className={`aspect-[9/5] overflow-hidden rounded-md border bg-white/[0.025] ${plan.cardImage ? "border-white/15" : "border-dashed border-white/20"}`}>
+                  {plan.cardImage ? (
+                    <button type="button" onClick={() => setExpandedCard(plan)} aria-haspopup="dialog" aria-label={`Ampliar tarjeta del plan ${plan.name}`} className="group relative block h-full w-full cursor-zoom-in focus-visible:outline-offset-[-4px]">
+                      <img src={plan.cardImage} alt={`Tarjeta de presentación de ejemplo del plan ${plan.name}`} loading="lazy" width="900" height="500" className="h-full w-full object-contain" />
+                      <span aria-hidden="true" className="absolute bottom-2 right-2 rounded bg-black/75 px-2 py-1 text-[10px] text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none">Ampliar ↗</span>
+                    </button>
+                  ) : (
+                    <div className="flex h-full flex-col items-center justify-center gap-2 text-white/35">
+                      <svg aria-hidden="true" viewBox="0 0 36 24" fill="none" className="h-7 w-10" stroke="currentColor" strokeWidth="1">
+                        <rect x="1" y="1" width="34" height="22" rx="2" />
+                        <path d="M6 8h12M6 12h8M6 17h17" />
+                        <rect x="25" y="7" width="5" height="5" rx="0.5" />
+                      </svg>
+                      <span className="text-[11px]">Vista previa de la tarjeta</span>
+                    </div>
+                  )}
+                </div>
+              </figure>
               <ul className="grid grid-cols-2 gap-x-3 gap-y-1.5 md:grid-cols-1 md:gap-y-1">
                 {plan.included.map(feature => <li key={feature} className="flex gap-2 text-[11px] leading-snug text-white/80 md:text-xs"><span aria-hidden="true" className="text-white/60">✓</span>{feature}</li>)}
               </ul>
@@ -112,6 +157,27 @@ export default function Presupuesto() {
           ))}
         </div>
       </section>
+      <dialog
+        ref={cardDialog}
+        aria-labelledby="card-dialog-title"
+        onClose={() => setExpandedCard(null)}
+        onClick={event => {
+          if (event.target === event.currentTarget) cardDialog.current.close();
+        }}
+        className="fixed inset-0 m-0 h-[100svh] max-h-none w-screen max-w-none items-center justify-center border-0 bg-transparent p-4 text-white outline-none backdrop:bg-black/85 backdrop:backdrop-blur-sm open:flex sm:p-8"
+      >
+        {expandedCard && (
+          <div className="w-full max-w-5xl">
+            <div className="mb-3 flex items-center justify-between gap-4">
+              <h2 id="card-dialog-title" className="text-sm font-medium sm:text-base">Tarjeta de presentación · {expandedCard.name}</h2>
+              <button type="button" onClick={() => cardDialog.current.close()} aria-label="Cerrar tarjeta ampliada" className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/25 bg-black/60 transition-colors hover:bg-white/15">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-6 w-6"><path d="m6 6 12 12M18 6 6 18" /></svg>
+              </button>
+            </div>
+            <img src={expandedCard.cardImage} alt={`Tarjeta de presentación de ejemplo del plan ${expandedCard.name}`} width="1080" height="600" className="mx-auto max-h-[calc(100svh-8rem)] w-auto max-w-full rounded-md object-contain shadow-2xl" />
+          </div>
+        )}
+      </dialog>
     </main>
   );
 }

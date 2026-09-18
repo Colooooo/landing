@@ -56,13 +56,13 @@ const tools = [
     title: "React",
     icon: "https://img.icons8.com/?size=100&id=58811&format=png&color=ffffff",
     description:
-      "Permite construir interfaces y animaciones fluidas, y programar la estética de la página a medida.",
+      "El lenguaje de programación que usamos. Permite construir interfaces o animaciones fluidas y programar la estética de la página a medida.",
   },
   {
     title: "Supabase",
     icon: supabaselogo,
     description:
-      "Plataforma para almacenar y gestionar datos de forma segura. Usada para que los clientes puedan enviar mensajes o pedidos, gestionar inventarios o turnos, entre otras.",
+      "Plataforma para almacenar y gestionar datos de forma segura, para que los clientes puedan enviar mensajes o pedidos, gestionar inventarios o turnos.",
   },
   {
     title: "Vercel",
