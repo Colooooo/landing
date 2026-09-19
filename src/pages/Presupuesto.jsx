@@ -81,7 +81,7 @@ export default function Presupuesto() {
             
           </motion.div>
           <motion.p variants={reveal} className="max-w-xl text-sm leading-8 text-white/90 sm:text-xl">
-            Ve nuestras páginas de ejemplo y pide tu presupuesto sin costo alguno.
+            Conoce nuestras páginas de ejemplo y pide tu presupuesto sin costo alguno.
           </motion.p>
           <motion.div variants={reveal} className="mt-[30%] md:mt-[25%]">
             <ScrollArrow />

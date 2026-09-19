@@ -50,19 +50,19 @@ const tools = [
     title: "Photoshop",
     icon: "https://img.icons8.com/?size=100&id=2916&format=png&color=ffffff",
     description:
-      "Lo usamos para planificar el diseño, crear logos y piezas visuales, y editar imágenes y fotografías.",
+      "Lo usamos para planificar el diseño, crear logos o piezas visuales, y editar imágenes y fotografías.",
   },
   {
     title: "React",
     icon: "https://img.icons8.com/?size=100&id=58811&format=png&color=ffffff",
     description:
-      "El lenguaje de programación que usamos. Permite construir interfaces o animaciones fluidas y programar la estética de la página a medida.",
+      "El lenguaje de programación que usamos. Permite construir interfaces y animaciones fluidas, y programar la estética de la página a medida.",
   },
   {
     title: "Supabase",
     icon: supabaselogo,
     description:
-      "Plataforma para almacenar y gestionar datos de forma segura, para que los clientes puedan enviar mensajes o pedidos, gestionar inventarios o turnos.",
+      "Plataforma para almacenar y gestionar datos de forma segura, para que clientes puedan enviar mensajes o pedidos, gestionar inventarios o turnos.",
   },
   {
     title: "Vercel",
@@ -214,7 +214,7 @@ export default function Hero() {
           <motion.div variants={reveal} className="mt-10">
             <Link
               to="/Presupuesto"
-              className="inline-flex items-center gap-2 border border-white/40 px-5 py-3 text-sm font-medium transition-colors hover:border-red-500 hover:bg-red-600"
+              className="inline-flex items-center gap-2 border border-white/40 px-5 py-3 text-sm font-medium transition-colors hover:border-white/80 hover:bg-white/20"
             >
               Ver planes
               <span aria-hidden="true">→</span>

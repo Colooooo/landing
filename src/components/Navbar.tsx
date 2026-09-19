@@ -56,7 +56,7 @@ export default function Navbar() {
   }, []);
 
   const links = [
-    { name: "Pedir presupuesto", path: "/Presupuesto" },
+    { name: "Ver planes", path: "/Presupuesto" },
   ];
 
   return (
@@ -98,7 +98,7 @@ export default function Navbar() {
                 className="
                   relative
                   text-sm
-                  hover:text-red-500
+                  hover:text-white/80
                   transition
                   duration-300
                   group
@@ -113,7 +113,7 @@ export default function Navbar() {
                     -bottom-1
                     w-0
                     h-[2px]
-                    bg-red-600
+                    bg-white
                     transition-all
                     duration-300
                     group-hover:w-full
