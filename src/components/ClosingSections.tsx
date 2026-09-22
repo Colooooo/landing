@@ -1,36 +1,88 @@
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { plans, whatsapp } from "../data/plans";
 import logo from "../assets/logotexto.png";
+import Reveal from "./Reveal";
+
+const steps = [
+  [
+    "Primero, tu negocio.",
+    "Nos contás qué hacés y qué necesitás. Definimos el alcance, los contenidos y un presupuesto antes de empezar.",
+  ],
+  [
+    "Después, el diseño.",
+    "Trabajamos con tu identidad y te mostramos los avances. Revisamos juntos la página y ajustamos los detalles.",
+  ],
+  [
+    "Por último, al mundo.",
+    "Publicamos tu web y diseñamos tu tarjeta QR. Si necesitás cambios después, podés consultar por mantenimiento.",
+  ],
+];
 
 export default function ClosingSections() {
+  const [step, setStep] = useState<number | null>(0);
+  const cardSection = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: cardSection,
+    offset: ["start end", "end start"],
+  });
+  const cardY = useTransform(scrollYProgress, [0, 1], [24, -24]);
+  const cardRotate = useTransform(scrollYProgress, [0, 1], [-8, 0]);
   return (
     <>
-      <section className="bridge-section shell" aria-labelledby="bridge-title">
-        <div className="qr-art">
-          <img
-            src={plans[1].cardImage}
-            alt="Tarjeta King Barber con código QR"
-            loading="lazy"
-            width="900"
-            height="500"
-          />
-          <span className="qr-art-label">DEL MOSTRADOR AL CELULAR ↗</span>
-        </div>
-        <div className="bridge-copy">
-          <p className="eyebrow">UNA EXPERIENCIA CONECTADA</p>
-          <h2 id="bridge-title">
-            Tu tarjeta abre la puerta.
+      <section
+        className="identity-section shell"
+        aria-labelledby="identity-title"
+      >
+        <Reveal className="identity-copy">
+          <p className="label">02 / DEL PAPEL A LA PANTALLA</p>
+          <h2 id="identity-title">
+            La misma identidad.
             <br />
-            <span>Tu web hace el resto.</span>
+            <span>En cada detalle.</span>
           </h2>
           <p>
-            En el mostrador, en una mesa o en una conversación. Una tarjeta con
-            QR lleva a tus clientes directo a lo que necesitan conocer de tu
-            negocio.
+            Una tarjeta que da ganas de guardar.
+            <br />
+            Una página que vale la pena abrir.
           </p>
-          <a href="#planes" className="text-link">
-            Descubrí las tarjetas de ejemplo <span aria-hidden="true">↗</span>
+          <p className="identity-description">
+            Diseñamos las dos para que tu negocio se reconozca desde el primer
+            contacto.
+          </p>
+          <a
+            className="line-link"
+            href={whatsapp()}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Quiero algo así <span aria-hidden="true">↗</span>
           </a>
+        </Reveal>
+        <div className="identity-art" ref={cardSection}>
+          <span className="art-caption label">
+            KING BARBER / IDENTIDAD APLICADA
+          </span>
+          <motion.img
+            src={plans[1].cardImage}
+            alt="Tarjeta de King Barber con su identidad visual y código QR"
+            width="900"
+            height="500"
+            loading="lazy"
+            style={reduceMotion ? undefined : { y: cardY, rotate: cardRotate }}
+          />
+          <div className="art-bottom label">
+            <span>TARJETA DE PRESENTACIÓN</span>
+            <span>90 × 50 MM</span>
+          </div>
         </div>
       </section>
       <section
@@ -38,64 +90,77 @@ export default function ClosingSections() {
         id="proceso"
         aria-labelledby="process-title"
       >
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">VOS CONOCÉS TU NEGOCIO. NOSOTROS, LA WEB.</p>
-            <h2 id="process-title">De «tengo una idea» a «ya está online».</h2>
-          </div>
-        </div>
-        <div className="process-grid">
-          {[
-            [
-              "01",
-              "Contanos tu idea",
-              "Qué hacés, qué te gustaría mostrar y qué necesitás. Te orientamos y preparamos un presupuesto sin costo.",
-            ],
-            [
-              "02",
-              "Le damos forma",
-              "Diseñamos y desarrollamos tu página. Vas viendo los avances y ajustamos los detalles juntos.",
-            ],
-            [
-              "03",
-              "Salí a mostrarla",
-              "Publicamos tu web y diseñamos tu tarjeta QR. También podés consultar por mantenimiento y actualizaciones.",
-            ],
-          ].map(([number, title, description]) => (
-            <article key={number}>
-              <span className="step-number">{number}</span>
-              <h3>{title}</h3>
-              <p>{description}</p>
-            </article>
+        <Reveal className="process-intro">
+          <p className="label">03 / CÓMO TRABAJAMOS</p>
+          <h2 id="process-title">
+            De cerca.
+            <br />
+            De principio a fin.
+          </h2>
+          <p>
+            Hablás con quienes hacen tu web.
+            <br />
+            Así de simple.
+          </p>
+        </Reveal>
+        <div className="process-list">
+          {steps.map(([title, description], index) => (
+            <div
+              className={`process-item ${step === index ? "is-open" : ""}`}
+              key={title}
+            >
+              <h3>
+                <button
+                  id={`step-button-${index}`}
+                  aria-expanded={step === index}
+                  aria-controls={`step-content-${index}`}
+                  onClick={() => setStep(step === index ? null : index)}
+                >
+                  <span className="step-index">0{index + 1}</span>
+                  <span>{title}</span>
+                  <span className="expand-symbol" aria-hidden="true">
+                    +
+                  </span>
+                </button>
+              </h3>
+              <AnimatePresence initial={false}>
+                {step === index && (
+                  <motion.div
+                    id={`step-content-${index}`}
+                    role="region"
+                    aria-labelledby={`step-button-${index}`}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{
+                      duration: reduceMotion ? 0 : 0.35,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className="process-answer"
+                  >
+                    <p>{description}</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           ))}
         </div>
       </section>
       <section className="faq-section shell" aria-labelledby="faq-title">
-        <div>
-          <p className="eyebrow">ANTES DE DAR EL PASO</p>
-          <h2 id="faq-title">
-            Dudas normales.
-            <br />
-            Respuestas claras.
-          </h2>
-        </div>
+        <h2 id="faq-title">Antes de empezar.</h2>
         <div className="faq-list">
           {[
             [
-              "¿Mi página va a ser igual al ejemplo?",
-              "No. Los ejemplos te ayudan a explorar la propuesta de cada plan. Diseñamos tu página con la identidad, el contenido y las necesidades de tu negocio.",
+              "¿El diseño es a medida?",
+              "Sí. Los ejemplos muestran el alcance de cada plan. Tu página tendrá la identidad, los textos y el contenido de tu negocio.",
             ],
             [
-              "¿Tengo que saber de tecnología?",
-              "No. Nos encargamos del diseño, la programación y la publicación. Vos nos contás de tu negocio y revisamos juntos los avances.",
+              "¿Qué pasa con el dominio y el mantenimiento?",
+              "Te detallamos los costos de dominio, alojamiento y mantenimiento que correspondan en el presupuesto. Todo se acuerda antes de comenzar.",
             ],
             [
-              "¿Qué incluye el precio?",
-              "Cada plan tiene un alcance de referencia que podés consultar arriba. Antes de empezar, definimos el presupuesto final, las funcionalidades y los costos de dominio, alojamiento y mantenimiento que correspondan.",
-            ],
-            [
-              "¿Y si necesito algo diferente?",
-              "Contanos qué tenés en mente. Podemos preparar una propuesta a medida; no necesitás elegir un plan antes de escribirnos.",
+              "¿Puedo pedir algo diferente?",
+              "Claro. Contanos qué necesitás y armamos una propuesta a medida. No hace falta elegir un plan para escribirnos.",
             ],
           ].map(([question, answer]) => (
             <details key={question}>
@@ -108,40 +173,49 @@ export default function ClosingSections() {
           ))}
         </div>
       </section>
-      <section className="contact-section shell" id="contacto">
-        <div>
-          <p className="eyebrow">EL PRÓXIMO EJEMPLO PODRÍA SER EL TUYO</p>
-          <h2>
-            Hagamos que tu negocio
-            <br />
-            se vea como se merece<span>.</span>
-          </h2>
-          <p>Contanos tu idea. El primer paso es una conversación.</p>
+      <section className="contact-section" id="contacto">
+        <div className="shell">
+          <Reveal className="contact-top">
+            <p className="label">¿TENÉS UN PROYECTO EN MENTE?</p>
+            <span className="label">LO CONVERSAMOS.</span>
+          </Reveal>
+          <a
+            href={whatsapp()}
+            className="contact-title"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>Hablemos.</span>
+            <span className="contact-arrow" aria-hidden="true">
+              ↗
+            </span>
+          </a>
+          <div className="contact-bottom">
+            <p>Una idea, una pregunta o un negocio por mostrar.</p>
+            <a href={whatsapp()} target="_blank" rel="noreferrer">
+              WhatsApp / 092 204 234 <span aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
-        <a
-          className="button button-dark"
-          href={whatsapp()}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Hablemos por WhatsApp <span aria-hidden="true">↗</span>
-        </a>
       </section>
       <footer className="site-footer shell">
         <Link to="/" aria-label="JL Marketing · Inicio">
-          <img src={logo} alt="JL Marketing" />
+          <img src={logo} alt="JL Marketing" width="100" height="33" />
         </Link>
-        <p>Diseño con intención. Webs con identidad.</p>
+        <span>Diseño & desarrollo web.</span>
         <span>© {new Date().getFullYear()} JL Marketing</span>
+        <a href="#contenido">
+          Volver arriba <span aria-hidden="true">↑</span>
+        </a>
       </footer>
-      <div className="mobile-dock">
+      <nav className="mobile-dock" aria-label="Accesos rápidos">
         <a href="#planes">
-          Ver planes <span aria-hidden="true">↑</span>
+          Ver planes <span aria-hidden="true">↓</span>
         </a>
         <a href={whatsapp()} target="_blank" rel="noreferrer">
           Hablemos <span aria-hidden="true">↗</span>
         </a>
-      </div>
+      </nav>
     </>
   );
 }

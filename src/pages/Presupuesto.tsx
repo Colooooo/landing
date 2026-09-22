@@ -1,15 +1,17 @@
 import Plans from "../components/Plans";
 import ClosingSections from "../components/ClosingSections";
+import Reveal from "../components/Reveal";
 export default function Presupuesto() {
   return (
     <main id="contenido" className="budget-page">
-      <div className="budget-intro shell">
-        <p className="eyebrow">MENOS IMAGINAR. MÁS EXPLORAR.</p>
+      <Reveal className="budget-intro shell">
+        <p className="label">DISEÑO A MEDIDA / PLANES</p>
         <h1>
-          Elegí tu próximo paso<span className="accent">.</span>
+          Encontrá tu punto
+          <br />
+          de partida.
         </h1>
-        <p>Tres puntos de partida. Una web con la identidad de tu negocio.</p>
-      </div>
+      </Reveal>
       <Plans />
       <ClosingSections />
     </main>
