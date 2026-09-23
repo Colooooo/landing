@@ -2,15 +2,16 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   AnimatePresence,
-  motion,
+  m,
   useReducedMotion,
   useScroll,
   useTransform,
 } from "framer-motion";
 import { whatsapp } from "../data/plans";
-import logo from "../assets/logotexto.png";
+import logo from "../assets/optimized/logo.webp";
 import Reveal from "./Reveal";
-import tarjetajlan from "../assets/tarjetas/tarjetajlan.jpg"
+import tarjetajlan from "../assets/optimized/tarjeta-jl-1200.webp";
+import tarjetaSmall from "../assets/optimized/tarjeta-jl-640.webp";
 
 const steps = [
   [
@@ -57,7 +58,8 @@ export default function ClosingSections() {
             Una página que vale la pena abrir.
           </p>
           <p className="identity-description">
-            Diseñamos las dos para que tu negocio se reconozca desde el primer momento.
+            Diseñamos las dos para que tu negocio se reconozca desde el primer
+            momento.
           </p>
           <a
             className="line-link"
@@ -69,11 +71,14 @@ export default function ClosingSections() {
           </a>
         </Reveal>
         <div className="identity-art" ref={cardSection}>
-          <motion.img
+          <m.img
             src={tarjetajlan}
+            srcSet={`${tarjetaSmall} 640w, ${tarjetajlan} 1200w`}
+            sizes="(max-width: 760px) 80vw, (max-width: 1448px) 36vw, 490px"
+            decoding="async"
             alt="Tarjeta de JL Marketing"
-            width="900"
-            height="500"
+            width="1200"
+            height="686"
             loading="lazy"
             style={reduceMotion ? undefined : { y: cardY, rotate: cardRotate }}
           />
@@ -123,7 +128,7 @@ export default function ClosingSections() {
               </h3>
               <AnimatePresence initial={false}>
                 {step === index && (
-                  <motion.div
+                  <m.div
                     id={`step-content-${index}`}
                     role="region"
                     aria-labelledby={`step-button-${index}`}
@@ -137,7 +142,7 @@ export default function ClosingSections() {
                     className="process-answer"
                   >
                     <p>{description}</p>
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
             </div>

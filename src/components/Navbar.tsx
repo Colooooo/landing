@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-import { motion, useScroll, useSpring, useReducedMotion } from "framer-motion";
-import logo from "../assets/logotexto.png";
+import { m, useScroll, useSpring, useReducedMotion } from "framer-motion";
+import logo from "../assets/optimized/logo.webp";
 import { whatsapp } from "../data/plans";
 
 export default function Navbar() {
@@ -10,7 +10,7 @@ export default function Navbar() {
   const reduceMotion = useReducedMotion();
   return (
     <header className="site-header">
-      <motion.div
+      <m.div
         className="reading-progress"
         style={{ scaleX: reduceMotion ? scrollYProgress : progress }}
         aria-hidden="true"

@@ -1,5 +1,13 @@
-@import "@fontsource-variable/manrope";
-@import "tailwindcss";
+@import "tailwindcss" source("./");
+
+@font-face {
+  font-family: "Manrope Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url("@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2")
+    format("woff2");
+}
 
 :root {
   font-family: "Manrope Variable", Arial, sans-serif;
@@ -302,6 +310,7 @@ h3 {
   text-align: right;
 }
 .plan-tabs {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: 1px solid var(--line);
@@ -354,6 +363,8 @@ h3 {
   transform: translate(3px, -3px);
 }
 .tab-underline {
+  width: calc(100% / 3);
+  pointer-events: none;
   position: absolute;
   bottom: -1px;
   left: 0;

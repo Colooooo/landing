@@ -1,11 +1,11 @@
 import { useRef, useState, type KeyboardEvent } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { plans, whatsapp } from "../data/plans";
 import Reveal from "./Reveal";
 
 export default function Plans() {
   const [selected, setSelected] = useState(0);
-  const [card, setCard] = useState(0);
+  const [card, setCard] = useState<number | null>(null);
   const [view, setView] = useState<"web" | "card">("web");
   const dialog = useRef<HTMLDialogElement>(null);
   const comparison = useRef<HTMLDetailsElement>(null);
@@ -42,8 +42,11 @@ export default function Plans() {
         <h2 id="plans-title">¡Revisá nuestro trabajo!</h2>
         <p className="section-note">Elegí un plan. Explorá el ejemplo.</p>
         <p className="plans-subtitle">
-          Usa nuestros planes como guía de lo que puedes esperar de nosotros.<br/>
-          Cualquier idea es realizable y nuestro presupuesto se adapta a tu negocio.<br/>
+          Usa nuestros planes como guía de lo que puedes esperar de nosotros.
+          <br />
+          Cualquier idea es realizable y nuestro presupuesto se adapta a tu
+          negocio.
+          <br />
         </p>
       </Reveal>
       <div className="plan-tabs" role="tablist" aria-label="Planes disponibles">
@@ -69,18 +72,18 @@ export default function Plans() {
             <span className="tab-arrow" aria-hidden="true">
               ↗
             </span>
-            {selected === index && (
-              <motion.span
-                className="tab-underline"
-                layoutId="active-plan"
-                transition={{
-                  duration: reduceMotion ? 0 : 0.45,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-              />
-            )}
           </button>
         ))}
+        <m.span
+          className="tab-underline"
+          aria-hidden="true"
+          initial={false}
+          animate={{ x: `${selected * 100}%` }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.45,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        />
       </div>
       <div
         role="tabpanel"
@@ -113,7 +116,7 @@ export default function Plans() {
             className={`project-stage stage-${selected} ${view === "card" ? "show-card" : ""}`}
           >
             <AnimatePresence mode="wait" initial={false}>
-              <motion.div
+              <m.div
                 className="stage-content"
                 key={`${selected}-${view}`}
                 initial={{
@@ -148,10 +151,13 @@ export default function Plans() {
                     <div className="screen-image">
                       <img
                         src={plan.image}
+                        srcSet={`${plan.imageSmall} 640w, ${plan.image} 1200w`}
+                        sizes="(max-width: 760px) 80vw, (max-width: 1100px) 49vw, (max-width: 1448px) 55vw, 735px"
                         alt={`Diseño web de ejemplo para ${plan.business}`}
                         width="1200"
                         height="675"
                         fetchPriority="high"
+                        decoding="async"
                       />
                     </div>
                     <span className="screen-visit">
@@ -167,6 +173,7 @@ export default function Plans() {
                   >
                     <img
                       src={plan.cardImage}
+                      decoding="async"
                       alt={`Tarjeta de presentación de ${plan.business}`}
                       width="900"
                       height="500"
@@ -176,7 +183,7 @@ export default function Plans() {
                     </span>
                   </button>
                 )}
-              </motion.div>
+              </m.div>
             </AnimatePresence>
             <span className="stage-index" aria-hidden="true">
               0{selected + 1} / 03
@@ -189,7 +196,7 @@ export default function Plans() {
             <span className="label">0{selected + 1}</span>
           </div>
           <AnimatePresence mode="wait" initial={false}>
-            <motion.div
+            <m.div
               key={selected}
               initial={{
                 opacity: reduceMotion ? 1 : 0,
@@ -212,7 +219,7 @@ export default function Plans() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </m.div>
           </AnimatePresence>
           <div className="project-purchase">
             <div className="project-price">
@@ -287,27 +294,35 @@ export default function Plans() {
       <dialog
         ref={dialog}
         className="card-dialog"
+        onClose={() => setCard(null)}
         aria-labelledby="card-dialog-title"
         onClick={(event) => {
           if (event.target === event.currentTarget) dialog.current?.close();
         }}
       >
-        <div className="dialog-heading">
-          <h2 id="card-dialog-title">{plans[card].business} / Tarjeta QR</h2>
-          <button
-            autoFocus
-            onClick={() => dialog.current?.close()}
-            aria-label="Cerrar tarjeta ampliada"
-          >
-            ×
-          </button>
-        </div>
-        <img
-          src={plans[card].cardImage}
-          alt={`Tarjeta QR de ${plans[card].business}`}
-          width="900"
-          height="500"
-        />
+        {card !== null && (
+          <>
+            <div className="dialog-heading">
+              <h2 id="card-dialog-title">
+                {plans[card].business} / Tarjeta QR
+              </h2>
+              <button
+                autoFocus
+                onClick={() => dialog.current?.close()}
+                aria-label="Cerrar tarjeta ampliada"
+              >
+                ×
+              </button>
+            </div>
+            <img
+              src={plans[card].cardImage}
+              alt={`Tarjeta QR de ${plans[card].business}`}
+              width="900"
+              height="500"
+              decoding="async"
+            />
+          </>
+        )}
       </dialog>
     </section>
   );

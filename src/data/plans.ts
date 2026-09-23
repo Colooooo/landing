@@ -1,6 +1,9 @@
-import cafe from "../assets/cafeauroradesktop.jpg";
-import barberia from "../assets/barberia.jpg";
-import ferreteria from "../assets/ferreteria.jpg";
+import cafe from "../assets/optimized/cafe-1200.webp";
+import cafeSmall from "../assets/optimized/cafe-640.webp";
+import barberia from "../assets/optimized/barberia-1200.webp";
+import barberiaSmall from "../assets/optimized/barberia-640.webp";
+import ferreteria from "../assets/optimized/ferreteria-1200.webp";
+import ferreteriaSmall from "../assets/optimized/ferreteria-640.webp";
 import tarjetaCafe from "../assets/tarjetas/cafe-aurora.webp";
 import tarjetaBarberia from "../assets/tarjetas/king-barber-v2.webp";
 import tarjetaFerreteria from "../assets/tarjetas/el-galpon-v2.webp";
@@ -15,6 +18,7 @@ export const plans = [
     business: "Café Aurora",
     category: "Cafetería · Web de presentación",
     image: cafe,
+    imageSmall: cafeSmall,
     cardImage: tarjetaCafe,
     link: "https://cafeteria-sage-three.vercel.app/",
     description:
@@ -40,6 +44,7 @@ export const plans = [
     business: "King Barber Studio",
     category: "Barbería · Web con más secciones",
     image: barberia,
+    imageSmall: barberiaSmall,
     cardImage: tarjetaBarberia,
     link: "https://barberia-ruddy.vercel.app/",
     description:
@@ -60,6 +65,7 @@ export const plans = [
     business: "El Galpón Ferretería",
     category: "Ferretería · Una web como herramienta.",
     image: ferreteria,
+    imageSmall: ferreteriaSmall,
     cardImage: tarjetaFerreteria,
     link: "https://ferreteria-9kgk4zxjm-colooooos-projects.vercel.app/",
     description:

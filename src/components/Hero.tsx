@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import Reveal from "./Reveal";
 
 export default function Hero() {
@@ -18,17 +18,17 @@ export default function Hero() {
               key={line}
               aria-hidden="true"
             >
-              <motion.span
-                initial={reduceMotion ? false : { y: "110%", rotate: 3 }}
+              <m.span
+                initial={reduceMotion ? false : { y: "12%", rotate: 0 }}
                 animate={{ y: 0, rotate: 0 }}
                 transition={{
-                  duration: 1.1,
-                  delay: 0.08 + index * 0.13,
+                  duration: 0.65,
+                  delay: index * 0.06,
                   ease: [0.22, 1, 0.36, 1],
                 }}
               >
                 {line}
-              </motion.span>
+              </m.span>
             </span>
           ))}
         </h1>
