@@ -31,6 +31,12 @@ export default function ClosingSections() {
   const [step, setStep] = useState<number | null>(0);
   const cardSection = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: cardSection,
+    offset: ["start end", "end start"],
+  });
+  const cardY = useTransform(scrollYProgress, [0, 1], [24, -24]);
+  const cardRotate = useTransform(scrollYProgress, [0, 1], [-8, 0]);
 
   return (
     <>
@@ -65,10 +71,11 @@ export default function ClosingSections() {
         <div className="identity-art" ref={cardSection}>
           <motion.img
             src={tarjetajlan}
-            alt="Tarjeta de King Barber con su identidad visual y código QR"
+            alt="Tarjeta de JL Marketing"
             width="900"
             height="500"
             loading="lazy"
+            style={reduceMotion ? undefined : { y: cardY, rotate: cardRotate }}
           />
           <div className="art-bottom label">
             <span>TARJETA DE PRESENTACIÓN</span>
