@@ -7,7 +7,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { plans, whatsapp } from "../data/plans";
+import { whatsapp } from "../data/plans";
 import logo from "../assets/logotexto.png";
 import Reveal from "./Reveal";
 import tarjetajlan from "../assets/tarjetas/tarjetajlan.jpg"
