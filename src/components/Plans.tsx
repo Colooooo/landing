@@ -39,8 +39,12 @@ export default function Plans() {
     >
       <Reveal className="section-top">
         <p className="label">01 / PLANES & EJEMPLOS</p>
-        <h2 id="plans-title">Tres formas de empezar.</h2>
+        <h2 id="plans-title">¡Revisá nuestro trabajo!</h2>
         <p className="section-note">Elegí un plan. Explorá el ejemplo.</p>
+        <p className="plans-subtitle">
+          Usa nuestros planes como guía de lo que puedes esperar de nosotros.<br/>
+          Cualquier idea es realizable y nuestro presupuesto se adapta a tu negocio.<br/>
+        </p>
       </Reveal>
       <div className="plan-tabs" role="tablist" aria-label="Planes disponibles">
         {plans.map((item, index) => (
@@ -60,7 +64,7 @@ export default function Plans() {
             <span className="tab-number">0{index + 1}</span>
             <span className="tab-name">{item.name}</span>
             <span className="tab-price">
-              <small>desde</small> {item.price}
+              <small className="mr-1">desde</small> {item.price}
             </span>
             <span className="tab-arrow" aria-hidden="true">
               ↗
@@ -95,13 +99,13 @@ export default function Plans() {
                 onClick={() => setView("web")}
                 aria-pressed={view === "web"}
               >
-                Web
+                Página
               </button>
               <button
                 onClick={() => setView("card")}
                 aria-pressed={view === "card"}
               >
-                Tarjeta QR
+                Tarjeta
               </button>
             </div>
           </div>
@@ -176,9 +180,6 @@ export default function Plans() {
             </AnimatePresence>
             <span className="stage-index" aria-hidden="true">
               0{selected + 1} / 03
-            </span>
-            <span className="stage-caption" aria-hidden="true">
-              DISEÑADO PARA VERSE BIEN.
             </span>
           </div>
         </div>

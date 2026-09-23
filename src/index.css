@@ -287,6 +287,14 @@ h3 {
 .section-top h2 {
   font-size: 25px;
   letter-spacing: -1px;
+  text-align: center;
+}
+.plans-subtitle {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.9;
+  color: #b6b6af;
 }
 .section-note {
   font-size: 10px;
@@ -1052,9 +1060,6 @@ summary::-webkit-details-marker {
     font-size: 30px;
     margin-bottom: 14px;
   }
-  .section-top {
-    grid-template-columns: 1fr 1.5fr;
-  }
   .section-note {
     display: none;
   }
@@ -1193,8 +1198,7 @@ summary::-webkit-details-marker {
     padding-top: 27px;
   }
   .section-top {
-    display: flex;
-    justify-content: space-between;
+    grid-template-columns: 1fr;
     gap: 18px;
     margin-bottom: 20px;
   }
@@ -1206,8 +1210,8 @@ summary::-webkit-details-marker {
   .section-top h2 {
     font-size: 18px;
     letter-spacing: -0.5px;
-    max-width: 190px;
-    text-align: right;
+    max-width: none;
+    text-align: center;
   }
   .plan-tabs > button,
   .plan-tabs > button + button {

@@ -6,7 +6,6 @@ export default function Hero() {
   return (
     <section className="hero shell" aria-labelledby="hero-title">
       <Reveal className="hero-kicker">
-        <span className="label">JL MARKETING — ESTUDIO WEB</span>
         <span className="hero-location label">
           Uruguay / {new Date().getFullYear()}
         </span>
@@ -38,10 +37,8 @@ export default function Hero() {
             ✳
           </span>
           <p>
-            Diseñamos páginas con identidad. <br />
-            Para negocios que cuidan
-            <br />
-            lo que muestran.
+            Diseñamos páginas para impulsar tu <br />
+            negocio y tarjetas para fácil promoción.
           </p>
           <a className="round-link" href="#planes">
             <span>Ver planes y ejemplos</span>
@@ -54,7 +51,7 @@ export default function Hero() {
       <Reveal className="hero-baseline" delay={0.35}>
         <span>Diseño a medida. Desarrollo. Tarjetas QR.</span>
         <span>
-          Tu web desde <strong>$3.000</strong>
+          Tu web desde<strong>$1.500</strong>
         </span>
       </Reveal>
     </section>

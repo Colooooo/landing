@@ -10,7 +10,7 @@ export const whatsapp = (plan?: string) =>
 export const plans = [
   {
     name: "Básico",
-    price: "$3.000",
+    price: "$1.500",
     purpose: "Para que te encuentren.",
     business: "Café Aurora",
     category: "Cafetería · Web de presentación",
@@ -18,7 +18,7 @@ export const plans = [
     cardImage: tarjetaCafe,
     link: "https://cafeteria-sage-three.vercel.app/",
     description:
-      "Tu negocio, tus horarios y una forma fácil de contactarte. Todo en un mismo lugar.",
+      "Una página informativa, con detalles como qué ofrece tu negocio, dónde está y qué horarios se manejan.",
     included: [
       "1 sección principal",
       "Diseño adaptable a celular",
@@ -35,9 +35,9 @@ export const plans = [
   },
   {
     name: "Avanzado",
-    price: "$5.000",
+    price: "$3.000",
     purpose: "Para mostrar todo tu potencial.",
-    business: "King Barber",
+    business: "King Barber Studio",
     category: "Barbería · Web con más secciones",
     image: barberia,
     cardImage: tarjetaBarberia,
@@ -47,7 +47,7 @@ export const plans = [
     included: [
       "Múltiples secciones",
       "Diseño adaptable a celular",
-      "Animaciones avanzadas",
+      "Animaciones intermedias",
       "Formulario de contacto",
       "Integraciones básicas",
     ],
@@ -55,18 +55,18 @@ export const plans = [
   },
   {
     name: "Completo",
-    price: "$9.000",
+    price: "$5.000",
     purpose: "Para llevar tu negocio más lejos.",
-    business: "El Galpón",
-    category: "Ferretería · Web con catálogo",
+    business: "El Galpón Ferretería",
+    category: "Ferretería · Una web como herramienta.",
     image: ferreteria,
     cardImage: tarjetaFerreteria,
     link: "https://ferreteria-9kgk4zxjm-colooooos-projects.vercel.app/",
     description:
-      "Una web que también trabaja: catálogo, pagos, reservas y herramientas de gestión.",
+      "Una página que te servirá como herramienta para manejar tu negocio: catálogo de productos, recepción de pedidos, pagos online, y cualquier otra función necesaria.",
     included: [
       "Secciones ilimitadas",
-      "Animaciones premium",
+      "Animaciones avanzadas",
       "Catálogo de productos",
       "Pagos online",
       "Agenda de reservas",

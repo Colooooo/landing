@@ -22,10 +22,10 @@ export default function Navbar() {
         <Link to="/" className="brand" aria-label="JL Marketing · Inicio">
           <img src={logo} alt="JL Marketing" width="120" height="40" />
         </Link>
-        <span className="nav-studio">Diseño & desarrollo web</span>
+        <span className="nav-studio mt-2">Diseño & desarrollo web</span>
         <div className="nav-links">
           <Link to={pathname === "/" ? "/#planes" : "/Presupuesto"}>
-            Planes & ejemplos
+            Planes y ejemplos
           </Link>
           <Link to="/#proceso">El proceso</Link>
         </div>
@@ -35,7 +35,7 @@ export default function Navbar() {
           target="_blank"
           rel="noreferrer"
         >
-          Hablemos <span aria-hidden="true">↗</span>
+          Contáctanos <span aria-hidden="true">↗</span>
         </a>
       </nav>
     </header>

@@ -10,6 +10,7 @@ import {
 import { plans, whatsapp } from "../data/plans";
 import logo from "../assets/logotexto.png";
 import Reveal from "./Reveal";
+import tarjetajlan from "../assets/tarjetas/tarjetajlan.jpg"
 
 const steps = [
   [
@@ -30,12 +31,7 @@ export default function ClosingSections() {
   const [step, setStep] = useState<number | null>(0);
   const cardSection = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: cardSection,
-    offset: ["start end", "end start"],
-  });
-  const cardY = useTransform(scrollYProgress, [0, 1], [24, -24]);
-  const cardRotate = useTransform(scrollYProgress, [0, 1], [-8, 0]);
+
   return (
     <>
       <section
@@ -45,9 +41,9 @@ export default function ClosingSections() {
         <Reveal className="identity-copy">
           <p className="label">02 / DEL PAPEL A LA PANTALLA</p>
           <h2 id="identity-title">
-            La misma identidad.
+            La llave a tu página.
             <br />
-            <span>En cada detalle.</span>
+            <span>La misma identidad.</span>
           </h2>
           <p>
             Una tarjeta que da ganas de guardar.
@@ -55,8 +51,7 @@ export default function ClosingSections() {
             Una página que vale la pena abrir.
           </p>
           <p className="identity-description">
-            Diseñamos las dos para que tu negocio se reconozca desde el primer
-            contacto.
+            Diseñamos las dos para que tu negocio se reconozca desde el primer momento.
           </p>
           <a
             className="line-link"
@@ -68,16 +63,12 @@ export default function ClosingSections() {
           </a>
         </Reveal>
         <div className="identity-art" ref={cardSection}>
-          <span className="art-caption label">
-            KING BARBER / IDENTIDAD APLICADA
-          </span>
           <motion.img
-            src={plans[1].cardImage}
+            src={tarjetajlan}
             alt="Tarjeta de King Barber con su identidad visual y código QR"
             width="900"
             height="500"
             loading="lazy"
-            style={reduceMotion ? undefined : { y: cardY, rotate: cardRotate }}
           />
           <div className="art-bottom label">
             <span>TARJETA DE PRESENTACIÓN</span>
