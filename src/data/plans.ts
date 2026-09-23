@@ -67,7 +67,7 @@ export const plans = [
     image: ferreteria,
     imageSmall: ferreteriaSmall,
     cardImage: tarjetaFerreteria,
-    link: "https://ferreteria-9kgk4zxjm-colooooos-projects.vercel.app/",
+    link: "https://paginas-sepia.vercel.app/",
     description:
       "Una página que te servirá como herramienta para manejar tu negocio: catálogo de productos, recepción de pedidos, pagos online, y cualquier otra función necesaria.",
     included: [
