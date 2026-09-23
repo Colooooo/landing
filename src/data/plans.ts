@@ -2,7 +2,7 @@ import cafe from "../assets/optimized/cafe-1200.webp";
 import cafeSmall from "../assets/optimized/cafe-640.webp";
 import barberia from "../assets/optimized/barberia-1200.webp";
 import barberiaSmall from "../assets/optimized/barberia-640.webp";
-import ferreteria from "../assets/optimized/ferreteria-1200.webp";
+import ferreteria from "../assets/ferreteria.jpg";
 import ferreteriaSmall from "../assets/optimized/ferreteria-640.webp";
 import tarjetaCafe from "../assets/tarjetas/cafe-aurora.webp";
 import tarjetaBarberia from "../assets/tarjetas/king-barber-v2.webp";
