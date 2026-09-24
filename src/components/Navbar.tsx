@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { m, useScroll, useSpring, useReducedMotion } from "framer-motion";
 import logo from "../assets/optimized/logo.webp";
 import { whatsapp } from "../data/plans";
+import ArrowIcon from "./ArrowIcon";
 
 export default function Navbar() {
   const { pathname } = useLocation();
@@ -23,7 +24,7 @@ export default function Navbar() {
           <img src={logo} alt="JL Marketing" width="120" height="40" />
         </Link>
         <span className="nav-studio mt-2">Diseño & desarrollo web</span>
-        <div className="nav-links">
+        <div className="hidden nav-links">
           <Link to={pathname === "/" ? "/#planes" : "/Presupuesto"}>
             Planes y ejemplos
           </Link>
@@ -35,7 +36,9 @@ export default function Navbar() {
           target="_blank"
           rel="noreferrer"
         >
-          Contáctanos <span aria-hidden="true">↗</span>
+          Contáctanos <span aria-hidden="true">
+            <ArrowIcon className="w-3"/>
+          </span>
         </a>
       </nav>
     </header>
