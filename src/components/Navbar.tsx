@@ -24,7 +24,7 @@ export default function Navbar() {
           <img src={logo} alt="JL Marketing" width="120" height="40" />
         </Link>
         <span className="nav-studio mt-2">Diseño & desarrollo web</span>
-        <div className="hidden nav-links">
+        <div className="nav-links">
           <Link to={pathname === "/" ? "/#planes" : "/Presupuesto"}>
             Planes y ejemplos
           </Link>
