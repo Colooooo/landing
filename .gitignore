@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 /output/performance/
+/output/hero-chrome-profile/
+/output/hero-mobile*.png
 *.local
 
 # Editor directories and files

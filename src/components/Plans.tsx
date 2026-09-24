@@ -2,6 +2,7 @@ import { useRef, useState, type KeyboardEvent } from "react";
 import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { plans, whatsapp } from "../data/plans";
 import Reveal from "./Reveal";
+import ArrowIcon from "./ArrowIcon";
 
 export default function Plans() {
   const [selected, setSelected] = useState(0);
@@ -70,7 +71,7 @@ export default function Plans() {
               <small className="mr-1">desde</small> {item.price}
             </span>
             <span className="tab-arrow" aria-hidden="true">
-              ↗
+              <ArrowIcon />
             </span>
           </button>
         ))}
@@ -146,7 +147,7 @@ export default function Plans() {
                         <i />
                       </span>
                       <span>{plan.business}</span>
-                      <span>↗</span>
+                      <ArrowIcon />
                     </div>
                     <div className="screen-image">
                       <img
@@ -161,7 +162,7 @@ export default function Plans() {
                       />
                     </div>
                     <span className="screen-visit">
-                      Visitar sitio <span aria-hidden="true">↗</span>
+                      Visitar sitio <ArrowIcon />
                     </span>
                   </a>
                 ) : (
@@ -179,7 +180,7 @@ export default function Plans() {
                       height="500"
                     />
                     <span>
-                      Ampliar tarjeta <span aria-hidden="true">↗</span>
+                      Ampliar tarjeta <ArrowIcon />
                     </span>
                   </button>
                 )}
@@ -233,7 +234,7 @@ export default function Plans() {
               target="_blank"
               rel="noreferrer"
             >
-              Explorar ejemplo <span aria-hidden="true">↗</span>
+              Explorar ejemplo <ArrowIcon />
             </a>
             <a
               className="project-enquiry"
@@ -241,7 +242,7 @@ export default function Plans() {
               target="_blank"
               rel="noreferrer"
             >
-              Consultar por este plan <span aria-hidden="true">↗</span>
+              Consultar por este plan <ArrowIcon />
             </a>
           </div>
         </div>
@@ -261,7 +262,7 @@ export default function Plans() {
             });
           }}
         >
-          Comparar qué incluye cada plan <span aria-hidden="true">↓</span>
+          Comparar qué incluye cada plan <ArrowIcon direction="down" />
         </a>
       </div>
       <details ref={comparison} className="comparison" id="comparar">

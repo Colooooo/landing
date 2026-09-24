@@ -19,7 +19,7 @@ export default function Navbar() {
         Saltar al contenido
       </a>
       <nav className="nav-inner shell" aria-label="Navegación principal">
-        <Link to="/" className="brand" aria-label="JL Marketing · Inicio">
+        <Link to="/" className="brand ml-1" aria-label="JL Marketing · Inicio">
           <img src={logo} alt="JL Marketing" width="120" height="40" />
         </Link>
         <span className="nav-studio mt-2">Diseño & desarrollo web</span>

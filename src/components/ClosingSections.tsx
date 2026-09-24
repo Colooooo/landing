@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import {
   AnimatePresence,
   m,
@@ -29,6 +29,8 @@ const steps = [
 ];
 
 export default function ClosingSections() {
+  const { pathname } = useLocation();
+  const [heroInView, setHeroInView] = useState(pathname === "/");
   const [step, setStep] = useState<number | null>(0);
   const cardSection = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
@@ -38,6 +40,19 @@ export default function ClosingSections() {
   });
   const cardY = useTransform(scrollYProgress, [0, 1], [24, -24]);
   const cardRotate = useTransform(scrollYProgress, [0, 1], [-8, 0]);
+
+  useEffect(() => {
+    const hero = document.querySelector(".hero");
+    if (!hero) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setHeroInView(entry.isIntersecting),
+      { threshold: 0.05 },
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  const dockVisible = pathname !== "/" || !heroInView;
 
   return (
     <>
@@ -211,7 +226,12 @@ export default function ClosingSections() {
           Volver arriba <span aria-hidden="true">↑</span>
         </a>
       </footer>
-      <nav className="mobile-dock" aria-label="Accesos rápidos">
+      <nav
+        className={`mobile-dock ${dockVisible ? "" : "is-hidden"}`}
+        aria-label="Accesos rápidos"
+        aria-hidden={!dockVisible}
+        inert={!dockVisible}
+      >
         <a href="#planes">
           Ver planes <span aria-hidden="true">↓</span>
         </a>
