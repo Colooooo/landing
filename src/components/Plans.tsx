@@ -250,48 +250,11 @@ export default function Plans() {
       <div className="work-footnote">
         <span>
           Los ejemplos son un punto de partida. Tu diseño será a medida.
+          Precios de referencia. Definimos el alcance y el presupuesto final antes
+          de empezar.
         </span>
-        <a
-          href="#comparar"
-          onClick={(event) => {
-            event.preventDefault();
-            comparison.current?.setAttribute("open", "");
-            comparison.current?.scrollIntoView({
-              behavior: reduceMotion ? "instant" : "smooth",
-              block: "start",
-            });
-          }}
-        >
-          Comparar qué incluye cada plan <ArrowIcon direction="down" />
-        </a>
       </div>
-      <details ref={comparison} className="comparison" id="comparar">
-        <summary>
-          Los planes, en detalle <span aria-hidden="true">+</span>
-        </summary>
-        <div className="comparison-grid">
-          {plans.map((item) => (
-            <div key={item.name}>
-              <h3>
-                {item.name}
-                <span>{item.price}</span>
-              </h3>
-              <ul>
-                {item.included.map((feature) => (
-                  <li key={feature}>+ {feature}</li>
-                ))}
-              </ul>
-              {item.excluded.length > 0 && (
-                <p>No incluye: {item.excluded.join(", ")}.</p>
-              )}
-            </div>
-          ))}
-        </div>
-      </details>
-      <p className="pricing-note">
-        Precios de referencia. Definimos el alcance y el presupuesto final antes
-        de empezar.
-      </p>
+
       <dialog
         ref={dialog}
         className="card-dialog"

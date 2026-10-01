@@ -12,6 +12,7 @@ import logo from "../assets/optimized/logo.webp";
 import Reveal from "./Reveal";
 import tarjetajlan from "../assets/optimized/tarjeta-jl-1200.webp";
 import tarjetaSmall from "../assets/optimized/tarjeta-jl-640.webp";
+import ArrowIcon from "./ArrowIcon";
 
 const steps = [
   [
@@ -20,11 +21,11 @@ const steps = [
   ],
   [
     "Después, el diseño.",
-    "Trabajamos con tu identidad y te mostramos los avances. Revisamos juntos la página y ajustamos los detalles.",
+    "Trabajamos con tu identidad, te damos elecciones y te mostramos los avances. Revisamos juntos la página y ajustamos cualquier detalle.",
   ],
   [
     "Por último, al mundo.",
-    "Publicamos tu web y diseñamos tu tarjeta QR. Si necesitás cambios después, podés consultar por mantenimiento.",
+    "Publicamos tu web y diseñamos tu tarjeta QR. Ofrecemos el mantenimiento permanente de la página una vez publicada.",
   ],
 ];
 
@@ -61,29 +62,20 @@ export default function ClosingSections() {
         aria-labelledby="identity-title"
       >
         <Reveal className="identity-copy">
-          <p className="label">02 / DEL PAPEL A LA PANTALLA</p>
+          <p className="label">02 / EN LAS MANOS DE TUS CLIENTES</p>
           <h2 id="identity-title">
             La llave a tu página.
             <br />
             <span>La misma identidad.</span>
           </h2>
           <p>
-            Una tarjeta que da ganas de guardar.
+            Podés compartir tu web fácil y profesionalmente
             <br />
-            Una página que vale la pena abrir.
+            mediante tarjetas de negocio.
           </p>
           <p className="identity-description">
-            Diseñamos las dos para que tu negocio se reconozca desde el primer
-            momento.
+            Diseñamos las dos para que se establezca la identidad de tu negocio.
           </p>
-          <a
-            className="line-link"
-            href={whatsapp()}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Quiero algo así <span aria-hidden="true">↗</span>
-          </a>
         </Reveal>
         <div className="identity-art" ref={cardSection}>
           <m.img
@@ -113,12 +105,10 @@ export default function ClosingSections() {
           <h2 id="process-title">
             De cerca.
             <br />
-            De principio a fin.
+            Durante todo el proceso.
           </h2>
           <p>
             Hablás con quienes hacen tu web.
-            <br />
-            Así de simple.
           </p>
         </Reveal>
         <div className="process-list">
@@ -205,7 +195,7 @@ export default function ClosingSections() {
           >
             <span>Hablemos.</span>
             <span className="contact-arrow" aria-hidden="true">
-              ↗
+              <ArrowIcon className="w-20 h-15 m-0"/>
             </span>
           </a>
           <div className="contact-bottom">
@@ -233,10 +223,10 @@ export default function ClosingSections() {
         inert={!dockVisible}
       >
         <a href="#planes">
-          Ver planes <span aria-hidden="true">↓</span>
+          Ver planes <span aria-hidden="true">↑</span>
         </a>
         <a href={whatsapp()} target="_blank" rel="noreferrer">
-          Hablemos <span aria-hidden="true">↗</span>
+          Hablemos <span aria-hidden="true"><ArrowIcon className="w-3 h-3"/></span>
         </a>
       </nav>
     </>
