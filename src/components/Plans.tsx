@@ -9,7 +9,6 @@ export default function Plans() {
   const [card, setCard] = useState<number | null>(null);
   const [view, setView] = useState<"web" | "card">("web");
   const dialog = useRef<HTMLDialogElement>(null);
-  const comparison = useRef<HTMLDetailsElement>(null);
   const tabButtons = useRef<(HTMLButtonElement | null)[]>([]);
   const reduceMotion = useReducedMotion();
   const plan = plans[selected];
