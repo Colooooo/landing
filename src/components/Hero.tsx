@@ -44,7 +44,7 @@ export default function Hero() {
           Impulsá tu
           <br />negocio con
           <br />
-          nosotros<span>.</span>
+          nosotros.
         </m.h1>
         <Reveal className="hero-aside" delay={0.52}>
           <span className="hero-asterisk" aria-hidden="true">
