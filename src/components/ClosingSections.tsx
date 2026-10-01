@@ -184,8 +184,8 @@ export default function ClosingSections() {
       <section className="contact-section" id="contacto">
         <div className="shell">
           <Reveal className="contact-top">
-            <p className="label">¿TENÉS UN PROYECTO EN MENTE?</p>
-            <span className="label">LO CONVERSAMOS.</span>
+            <p className="label">¿TENÉS UNA IDEA EN MENTE?</p>
+            <span className="label">LA CONVERSAMOS.</span>
           </Reveal>
           <a
             href={whatsapp()}
@@ -199,18 +199,17 @@ export default function ClosingSections() {
             </span>
           </a>
           <div className="contact-bottom">
-            <p>Una idea, una pregunta o un negocio por mostrar.</p>
+            <p>Contáctanos y consultá por tu negocio sin compromiso.</p>
             <a href={whatsapp()} target="_blank" rel="noreferrer">
-              WhatsApp / 092 204 234 <span aria-hidden="true">↗</span>
+              WhatsApp / 092 204 234
             </a>
           </div>
         </div>
       </section>
       <footer className="site-footer shell">
         <Link to="/" aria-label="JL Marketing · Inicio">
-          <img src={logo} alt="JL Marketing" width="100" height="33" />
+          <img src={logo} alt="JL Marketing" width="40" height="23" />
         </Link>
-        <span>Diseño & desarrollo web.</span>
         <span>© {new Date().getFullYear()} JL Marketing</span>
         <a href="#contenido">
           Volver arriba <span aria-hidden="true">↑</span>
