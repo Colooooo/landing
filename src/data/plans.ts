@@ -13,7 +13,7 @@ export const whatsapp = (plan?: string) =>
 export const plans = [
   {
     name: "Básico",
-    price: "$1.500",
+    price: "$2.000",
     purpose: "Para que te encuentren.",
     business: "Café Aurora",
     category: "Cafetería · Web de presentación",
@@ -39,7 +39,7 @@ export const plans = [
   },
   {
     name: "Avanzado",
-    price: "$3.000",
+    price: "$3.500",
     purpose: "Para mostrar todo tu potencial.",
     business: "King Barber Studio",
     category: "Barbería · Web con más secciones",
