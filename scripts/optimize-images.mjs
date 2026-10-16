@@ -9,6 +9,7 @@ await mkdir(outputDir, { recursive: true });
 await mkdir(path.join(root, "output/performance"), { recursive: true });
 const results = [];
 const jobs = [
+  ["../../public/fondohero.jpg", "hero", [960, 1920]],
   ["cafeauroradesktop.jpg", "cafe", [640, 1200]],
   ["barberia.jpg", "barberia", [640, 1200]],
   ["ferreteria.jpg", "ferreteria", [640, 1200]],

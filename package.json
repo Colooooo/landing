@@ -14,14 +14,10 @@
   "dependencies": {
     "@fontsource-variable/manrope": "^5.3.0",
     "@tailwindcss/vite": "^4.3.0",
-    "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.40.0",
-    "git": "^0.1.5",
-    "leaflet": "^1.9.4",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-leaflet": "^5.0.0",
-    "react-router-dom": "^7.15.1",
+    "react-router-dom": "^7.18.4",
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
@@ -39,9 +35,9 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.6.0",
-    "sharp": "^0.35.4",
+    "sharp": "^0.35.5",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",
-    "vite": "^8.0.12"
+    "vite": "^8.3.4"
   }
 }

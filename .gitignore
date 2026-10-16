@@ -14,6 +14,9 @@ dist-ssr
 /output/hero-chrome-profile/
 /output/hero-mobile*.png
 *.local
+.env
+.env.*
+!.env.example
 
 # Editor directories and files
 .vscode/*

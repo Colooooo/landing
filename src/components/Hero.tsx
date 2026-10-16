@@ -22,11 +22,11 @@ export default function Hero() {
               aria-hidden="true"
             >
               <m.span
-                initial={reduceMotion ? false : { y: "105%", opacity: 0 }}
+                initial={reduceMotion ? false : { y: "12%", opacity: 1 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{
-                  duration: 1.15,
-                  delay: 0.18 + index * 0.16,
+                  duration: 0.65,
+                  delay: index * 0.08,
                   ease: [0.22, 1, 0.36, 1],
                 }}
               >
@@ -37,9 +37,9 @@ export default function Hero() {
         </h1>
         <m.h1
           className="hero-mobile-title"
-          initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+          initial={reduceMotion ? false : { opacity: 1, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.15, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         >
           Impulsá tu
           <br />negocio con

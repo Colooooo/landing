@@ -3,6 +3,17 @@ import { gzipSync } from 'node:zlib';
 
 const dir = 'dist/assets';
 const names = await readdir(dir);
+// Filtering only existing files used to silently pass when an optimized image
+// was replaced by its original JPG. Require every expected variant explicitly.
+for (const prefix of [
+  ...['cafe', 'barberia', 'ferreteria', 'tarjeta-jl'].flatMap(name =>
+    [640, 1200].map(width => `${name}-${width}-`)),
+  'hero-960-', 'hero-1920-', 'logo-',
+]) {
+  if (!names.some(name => name.startsWith(prefix) && name.endsWith('.webp'))) {
+    throw new Error(`Missing optimized build asset: ${prefix}*.webp`);
+  }
+}
 const assets = await Promise.all(names.map(async name => {
   const bytes = await readFile(`${dir}/${name}`);
   return { name, bytes: bytes.length, gzip: gzipSync(bytes).length };
@@ -12,6 +23,7 @@ const checks = [
   { name: 'JavaScript total (gzip)', bytes: sum('.js', 'gzip'), limit: 120000 },
   { name: 'CSS total (gzip)', bytes: sum('.css', 'gzip'), limit: 10000 },
   { name: 'Favicon', bytes: (await stat('dist/favicon.png')).size, limit: 2000 },
+  ...assets.filter(asset => /^hero-(960|1920)-/.test(asset.name)).map(asset => ({ name: asset.name, bytes: asset.bytes, limit: asset.name.includes('-960-') ? 20000 : 50000 })),
   ...assets.filter(asset => /^(cafe|barberia|ferreteria|tarjeta-jl)-(640|1200)-/.test(asset.name)).map(asset => ({ name: asset.name, bytes: asset.bytes, limit: asset.name.includes('-640-') ? 30000 : 70000 })),
   ...assets.filter(asset => /^logo-/.test(asset.name)).map(asset => ({ name: asset.name, bytes: asset.bytes, limit: 10000 })),
 ];
