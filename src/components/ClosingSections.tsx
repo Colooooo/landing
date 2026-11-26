@@ -33,14 +33,20 @@ export default function ClosingSections() {
   const { pathname } = useLocation();
   const [heroInView, setHeroInView] = useState(pathname === "/");
   const [step, setStep] = useState<number | null>(0);
+  const cardDialog = useRef<HTMLDialogElement>(null);
+  const [cardOpen, setCardOpen] = useState(false);
+  const sourceCard = useRef<HTMLImageElement>(null);
+  const expandedCard = useRef<HTMLImageElement>(null);
+  const cardAnimation = useRef<Animation | null>(null);
+  const closingCard = useRef(false);
   const cardSection = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: cardSection,
     offset: ["start end", "end start"],
   });
-  const cardY = useTransform(scrollYProgress, [0, 1], [24, -24]);
-  const cardRotate = useTransform(scrollYProgress, [0, 1], [-8, 0]);
+  const cardY = useTransform(scrollYProgress, [0, 1], [16, -16]);
+  const cardRotate = useTransform(scrollYProgress, [0, 1], [-5, 3]);
 
   useEffect(() => {
     const hero = document.querySelector(".hero");
@@ -52,6 +58,37 @@ export default function ClosingSections() {
     observer.observe(hero);
     return () => observer.disconnect();
   }, [pathname]);
+
+  const sourceTransform = () => {
+    const source = sourceCard.current!.getBoundingClientRect();
+    const target = expandedCard.current!.getBoundingClientRect();
+    return `translate(${source.left + source.width / 2 - target.left - target.width / 2}px, ${source.top + source.height / 2 - target.top - target.height / 2}px) rotate(${cardRotate.get()}deg) scale(${sourceCard.current!.offsetWidth / target.width})`;
+  };
+
+  useEffect(() => {
+    if (!cardOpen || !expandedCard.current) return;
+    cardAnimation.current = expandedCard.current.animate(
+      [{ transform: sourceTransform() }, { transform: "none" }],
+      { duration: reduceMotion ? 0 : 550, easing: "cubic-bezier(.22,1,.36,1)" },
+    );
+    // Geometry is sampled only when opening, so scroll motion stays independent.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cardOpen]);
+
+  const closeCard = async () => {
+    if (closingCard.current || !expandedCard.current) return;
+    closingCard.current = true;
+    cardAnimation.current?.finish();
+    cardDialog.current?.setAttribute("data-closing", "");
+    const animation = expandedCard.current.animate(
+      [{ transform: "none" }, { transform: sourceTransform() }],
+      { duration: reduceMotion ? 0 : 400, easing: "cubic-bezier(.4,0,.2,1)", fill: "forwards" },
+    );
+    try { await animation.finished; } catch { /* Unmounted during navigation. */ }
+    cardDialog.current?.close();
+    setCardOpen(false);
+    closingCard.current = false;
+  };
 
   const dockVisible = pathname !== "/" || !heroInView;
 
@@ -77,24 +114,44 @@ export default function ClosingSections() {
             Diseñamos las dos para que se establezca la identidad de tu negocio.
           </p>
         </Reveal>
-        <div className="identity-art" ref={cardSection}>
+        <div className="identity-art identity-showcase" ref={cardSection}>
+          <span className="card-stack card-stack-back" aria-hidden="true" />
+          <span className="card-stack card-stack-front" aria-hidden="true" />
+          <button className="identity-card-trigger" aria-label="Ampliar mi tarjeta de JL Marketing" aria-haspopup="dialog" onClick={() => {
+            cardDialog.current?.removeAttribute("data-closing");
+            setCardOpen(true);
+            cardDialog.current?.showModal();
+          }}>
           <m.img
+            ref={sourceCard}
             src={tarjetajlan}
             srcSet={`${tarjetaSmall} 640w, ${tarjetajlan} 1200w`}
-            sizes="(max-width: 760px) 80vw, (max-width: 1448px) 36vw, 490px"
+            sizes="(max-width: 760px) 76vw, (max-width: 1448px) 36vw, 490px"
             decoding="async"
             alt="Tarjeta de JL Marketing"
             width="1200"
             height="686"
             loading="lazy"
-            style={reduceMotion ? undefined : { y: cardY, rotate: cardRotate }}
+            style={{ visibility: cardOpen ? "hidden" : undefined, ...(reduceMotion ? {} : { y: cardY, rotate: cardRotate }) }}
           />
+          </button>
           <div className="art-bottom label">
-            <span>TARJETA DE PRESENTACIÓN</span>
+            <span>TOCÁ PARA AMPLIAR ↗</span>
             <span>90 × 50 MM</span>
           </div>
         </div>
       </section>
+      <dialog ref={cardDialog} className="card-dialog identity-dialog" aria-labelledby="identity-dialog-title" onClose={() => setCardOpen(false)} onCancel={(event) => { event.preventDefault(); void closeCard(); }} onClick={(event) => {
+        if (event.target === event.currentTarget) void closeCard();
+      }}>
+        {cardOpen && <>
+          <div className="dialog-heading">
+            <h2 id="identity-dialog-title">Tarjeta de JL Marketing</h2>
+            <button autoFocus aria-label="Cerrar tarjeta de JL Marketing" onClick={() => void closeCard()}>×</button>
+          </div>
+          <img ref={expandedCard} src={tarjetajlan} alt="Tarjeta ampliada de JL Marketing" width="1200" height="686" decoding="async" />
+        </>}
+      </dialog>
       <section
         className="process-section shell"
         id="proceso"

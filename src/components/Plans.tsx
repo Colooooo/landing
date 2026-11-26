@@ -1,4 +1,4 @@
-import { useRef, useState, type KeyboardEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { plans, whatsapp } from "../data/plans";
 import Reveal from "./Reveal";
@@ -9,6 +9,10 @@ export default function Plans() {
   const [card, setCard] = useState<number | null>(null);
   const [view, setView] = useState<"web" | "card">("web");
   const dialog = useRef<HTMLDialogElement>(null);
+  const sourceCard = useRef<HTMLImageElement>(null);
+  const expandedCard = useRef<HTMLImageElement>(null);
+  const cardAnimation = useRef<Animation | null>(null);
+  const closingCard = useRef(false);
   const tabButtons = useRef<(HTMLButtonElement | null)[]>([]);
   const reduceMotion = useReducedMotion();
   const plan = plans[selected];
@@ -28,9 +32,39 @@ export default function Plans() {
     tabButtons.current[next]?.focus();
   };
   const openCard = () => {
+    dialog.current?.removeAttribute("data-closing");
     setCard(selected);
     dialog.current?.showModal();
   };
+  const sourceTransform = useCallback(() => {
+    const source = sourceCard.current!.getBoundingClientRect();
+    const target = expandedCard.current!.getBoundingClientRect();
+    return `translate(${source.left + source.width / 2 - target.left - target.width / 2}px, ${source.top + source.height / 2 - target.top - target.height / 2}px) scale(${source.width / target.width})`;
+  }, []);
+
+  useEffect(() => {
+    if (card === null || !expandedCard.current) return;
+    cardAnimation.current = expandedCard.current.animate(
+      [{ transform: sourceTransform() }, { transform: "none" }],
+      { duration: reduceMotion ? 0 : 550, easing: "cubic-bezier(.22,1,.36,1)" },
+    );
+  }, [card, reduceMotion, sourceTransform]);
+
+  const closeCard = async () => {
+    if (closingCard.current || !expandedCard.current) return;
+    closingCard.current = true;
+    cardAnimation.current?.finish();
+    dialog.current?.setAttribute("data-closing", "");
+    const animation = expandedCard.current.animate(
+      [{ transform: "none" }, { transform: sourceTransform() }],
+      { duration: reduceMotion ? 0 : 400, easing: "cubic-bezier(.4,0,.2,1)", fill: "forwards" },
+    );
+    try { await animation.finished; } catch { /* Unmounted during navigation. */ }
+    dialog.current?.close();
+    setCard(null);
+    closingCard.current = false;
+  };
+
   return (
     <section
       className="work-section shell"
@@ -165,6 +199,8 @@ export default function Plans() {
                     aria-label={`Ampliar tarjeta QR de ${plan.business}`}
                   >
                     <img
+                      ref={sourceCard}
+                      style={{ visibility: card !== null ? "hidden" : undefined }}
                       src={plan.cardImage}
                       decoding="async"
                       alt={`Tarjeta de presentación de ${plan.business}`}
@@ -249,11 +285,12 @@ export default function Plans() {
 
       <dialog
         ref={dialog}
-        className="card-dialog"
+        className="card-dialog identity-dialog plan-card-dialog"
         onClose={() => setCard(null)}
+        onCancel={(event) => { event.preventDefault(); void closeCard(); }}
         aria-labelledby="card-dialog-title"
         onClick={(event) => {
-          if (event.target === event.currentTarget) dialog.current?.close();
+          if (event.target === event.currentTarget) void closeCard();
         }}
       >
         {card !== null && (
@@ -264,13 +301,14 @@ export default function Plans() {
               </h2>
               <button
                 autoFocus
-                onClick={() => dialog.current?.close()}
+                onClick={() => void closeCard()}
                 aria-label="Cerrar tarjeta ampliada"
               >
                 ×
               </button>
             </div>
             <img
+              ref={expandedCard}
               src={plans[card].cardImage}
               alt={`Tarjeta QR de ${plans[card].business}`}
               width="900"
