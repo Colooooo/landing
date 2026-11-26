@@ -38,16 +38,8 @@ export default function Plans() {
       aria-labelledby="plans-title"
     >
       <Reveal className="section-top">
-        <p className="label">01 / PLANES & EJEMPLOS</p>
-        <h2 id="plans-title">¡Revisá nuestro trabajo!</h2>
-        <p className="section-note">Elegí un plan. Explorá el ejemplo.</p>
-        <p className="plans-subtitle">
-          Usa nuestros planes como guía de lo que puedes esperar de nosotros.
-          <br />
-          Cualquier idea es realizable y nuestro presupuesto se adapta a tu
-          negocio.
-          <br />
-        </p>
+        <h2 id="plans-title">Elegí tu plan.</h2>
+        <p>Compará el alcance y explorá una web y su tarjeta en cada ejemplo. Precios en pesos uruguayos.</p>
       </Reveal>
       <div className="plan-tabs" role="tablist" aria-label="Planes disponibles">
         {plans.map((item, index) => (
@@ -59,13 +51,14 @@ export default function Plans() {
               tabButtons.current[index] = element;
             }}
             aria-selected={selected === index}
-            aria-controls={`panel-${index}`}
+            aria-controls="plan-panel"
             tabIndex={selected === index ? 0 : -1}
             onClick={() => changePlan(index)}
             onKeyDown={(event) => onTabKey(event, index)}
           >
-            <span className="tab-number">0{index + 1}</span>
+            
             <span className="tab-name">{item.name}</span>
+            <span className="tab-purpose">{item.purpose}</span>
             <span className="tab-price">
               <small className="mr-1">desde</small> {item.price}
             </span>
@@ -87,7 +80,7 @@ export default function Plans() {
       </div>
       <div
         role="tabpanel"
-        id={`panel-${selected}`}
+        id="plan-panel"
         aria-labelledby={`tab-${selected}`}
         tabIndex={0}
         className="project-panel"
@@ -229,19 +222,19 @@ export default function Plans() {
             </div>
             <a
               className="button button-light"
-              href={plan.link}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Explorar ejemplo <ArrowIcon />
-            </a>
-            <a
-              className="project-enquiry"
               href={whatsapp(plan.name)}
               target="_blank"
               rel="noreferrer"
             >
-              Consultar por este plan <ArrowIcon />
+              Consultar por WhatsApp <ArrowIcon />
+            </a>
+            <a
+              className="project-enquiry"
+              href={plan.link}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Visitar la web de ejemplo <ArrowIcon />
             </a>
           </div>
         </div>

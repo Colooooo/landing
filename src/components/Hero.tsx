@@ -1,80 +1,24 @@
-import { m, useReducedMotion } from "framer-motion";
-import Reveal from "./Reveal";
+import { plans } from "../data/plans";
+import coverCard from "../assets/optimized/cafe-card-cover.webp";
 import ArrowIcon from "./ArrowIcon";
-import ScrollArrow from "./ScrollArrow";
 
 export default function Hero() {
-  const reduceMotion = useReducedMotion();
+  const example = plans[0];
   return (
-    <section className="hero" aria-label="Diseño web a medida">
-      <Reveal className="hero-kicker">
-        <span className="mobile-hero-kicker label">Uruguay / 2026</span>
-        <span className="hero-location label">
-          Uruguay / {new Date().getFullYear()}
-        </span>
-      </Reveal>
-      <div className="hero-layout">
-        <h1 className="hero-desktop-title" aria-label="Una buena web se nota.">
-          {["Una buena web", "se nota."].map((line, index) => (
-            <span
-              className={`title-mask title-line-${index}`}
-              key={line}
-              aria-hidden="true"
-            >
-              <m.span
-                initial={reduceMotion ? false : { y: "12%", opacity: 1 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{
-                  duration: 0.65,
-                  delay: index * 0.08,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-              >
-                {line}
-              </m.span>
-            </span>
-          ))}
-        </h1>
-        <m.h1
-          className="hero-mobile-title"
-          initial={reduceMotion ? false : { opacity: 1, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-        >
-          Impulsá tu
-          <br />negocio con
-          <br />
-          nosotros.
-        </m.h1>
-        <Reveal className="hero-aside" delay={0.52}>
-          <span className="hero-asterisk" aria-hidden="true">
-            ✳
-          </span>
-          <p className="hero-desktop-copy">
-            Diseñamos páginas para impulsar tu <br />
-            negocio y tarjetas para fácil promoción.
-          </p>
-          <p className="hero-mobile-copy">
-            Hacemos páginas web y tarjetas QR para que puedas promocionar
-            e innovar tu negocio.
-          </p>
-          <a className="round-link" href="#planes">
-            <span>Ver planes y ejemplos</span>
-            <span className="round-arrow" aria-hidden="true">
-              <ArrowIcon direction="down" />
-            </span>
-          </a>
-        </Reveal>
+    <section className="hero studio-cover" aria-labelledby="cover-title">
+      <div className="cover-copy">
+        <h1 id="cover-title">Tu negocio,<br />de la tarjeta<br /><em>a la web.</em></h1>
+        <p>Diseñamos tu página y tu tarjeta QR para que tus clientes te encuentren con un escaneo.</p>
+        <a className="cover-link" href="#planes">Ver planes desde {example.price} UYU <ArrowIcon direction="down" /></a>
       </div>
-      <Reveal className="hero-baseline" delay={0.82}>
-        <span className="hero-desktop-baseline">
-          Diseño a medida. Desarrollo. Tarjetas QR.
-        </span>
-        <ScrollArrow />
-        <span>
-          Tu web desde<strong>$1.500</strong>
-        </span>
-      </Reveal>
+      <figure className="cover-work">
+        <div className="cover-print">
+          <img className="cover-screen" src={example.image} srcSet={`${example.imageSmall} 640w, ${example.image} 1200w`} sizes="(max-width: 760px) 78vw, 44vw" alt="Página web de ejemplo para Café Aurora" width="1200" height="675" fetchPriority="high" />
+          <img className="cover-card" src={coverCard} alt="Tarjeta QR a juego con la web" width="900" height="500" />
+        </div>
+        <figcaption><strong>Café Aurora</strong><span>Ejemplo de web y tarjeta QR</span></figcaption>
+      </figure>
     </section>
   );
 }
+
